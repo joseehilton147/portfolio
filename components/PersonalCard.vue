@@ -90,7 +90,7 @@
 		</div>
 	</div>
 	<button
-		class="mt-6 w-full rounded-md border-0 bg-indigo-500 px-6 py-3 text-2xl font-medium text-white hover:bg-indigo-600 focus:outline-none"
+		class="mt-5 w-full rounded-md border-0 bg-indigo-500 px-6 py-3 text-2xl font-medium text-white hover:bg-indigo-600 focus:outline-none"
 	>
 		Download CV
 	</button>
