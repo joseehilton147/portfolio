@@ -20,5 +20,7 @@
 </script>
 
 <template>
-	<h1 :class="['font-rancho tracking-tight dark:text-white', textClass, spacing, textSize]">{{ text }}</h1>
+	<h1 :class="['font-rancho cursor-default tracking-tight dark:text-white', textClass, spacing, textSize]">
+		{{ text }}
+	</h1>
 </template>
