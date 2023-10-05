@@ -27,4 +27,8 @@ export default defineNuxtConfig({
 	tailwindcss: {
 		viewer: false,
 	},
+
+	experimental: {
+		viewTransition: true,
+	},
 })
