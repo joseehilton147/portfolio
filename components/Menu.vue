@@ -37,7 +37,7 @@
 			:key="index"
 			:to="item.link"
 			:class="[
-				'flex flex-col items-center justify-center rounded-md bg-gray-100 p-4 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:bg-neutral-600 dark:text-white dark:hover:bg-indigo-500',
+				'flex flex-col items-center justify-center rounded-md bg-gray-100 p-4 duration-300 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:bg-neutral-600 dark:text-white dark:hover:bg-indigo-500',
 				{'mb-4': sidebarItems.length - 1 !== index},
 				{'bg-indigo-500 text-white dark:bg-indigo-500': item.active},
 			]"
