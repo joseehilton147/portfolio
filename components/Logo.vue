@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="flex w-auto cursor-default items-center justify-center rounded-md bg-white shadow-sm dark:bg-neutral-800"
+		class="flex w-fit cursor-default items-center justify-center rounded-md bg-white shadow-sm dark:bg-neutral-800"
 	>
 		<div class="text-center">
 			<h1 class="rounded-md p-2 text-4xl text-indigo-500">

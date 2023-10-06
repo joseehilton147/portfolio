@@ -93,18 +93,18 @@
 </script>
 
 <template>
-	<UxCursiveTitle text="Hello 👋" />
+	<UxCursiveTitle text="Hello 👋" class="mb-8" />
 	<p class="dark:text-white">
 		Make sure to include in your wheelhouse that ipo will be a game-changer, so dogpile that, or those options are
 		already baked in with this model, or organic growth, or per my previous email.
 	</p>
-	<p class="mt-3 dark:text-white">
+	<p class="my-4 dark:text-white">
 		We want to empower the team with the right tools and guidance to uplevel our craft and build better high touch
 		client. Even dead cats bounce pulling teeth, and to be inspired is to become creative, innovative and energized
 		we want this philosophy to trickle down to all our stakeholders.
 	</p>
-	<UxCursiveTitle text="What i do!" text-size="text-5xl" :underline-effect="true" />
-	<div class="mt-8 grid grid-cols-2 gap-4">
+	<UxCursiveTitle text="What i do!" text-size="text-5xl" :underline-effect="true" class="my-8" />
+	<div class="grid grid-cols-2 gap-4">
 		<div v-for="(area, index) of areas" :key="index" :class="[' rounded-md shadow-sm', getColorClass(index)]">
 			<div class="relative px-6 py-4">
 				<h1 class="mb-2 text-2xl font-medium dark:text-white">{{ area.name }}</h1>
@@ -115,12 +115,12 @@
 			</div>
 		</div>
 	</div>
-	<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" :underline-effect="true" />
+	<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" :underline-effect="true" class="my-8" />
 	<div>
 		<swiper-container ref="swiperInstance">
 			<swiper-slide v-for="(post, index) of posts" :key="index">
 				<img :src="post.image" :alt="post.title" class="rounded-md" />
-				<h1 class="mt-3 dark:text-white">{{ post.title }}</h1>
+				<h1 class="mt-4 dark:text-white">{{ post.title }}</h1>
 			</swiper-slide>
 		</swiper-container>
 	</div>

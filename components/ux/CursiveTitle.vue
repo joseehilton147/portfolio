@@ -6,11 +6,7 @@
 		},
 		textClass: {
 			type: String,
-			default: 'my-5 font-medium',
-		},
-		spacing: {
-			type: String,
-			default: 'mb-5',
+			default: 'font-medium',
 		},
 		textSize: {
 			type: String,
@@ -24,14 +20,7 @@
 </script>
 
 <template>
-	<h1
-		:class="[
-			'font-rancho underlineEffect cursor-default tracking-tight dark:text-white',
-			textClass,
-			spacing,
-			textSize,
-		]"
-	>
+	<h1 :class="['font-rancho underlineEffect cursor-default tracking-tight dark:text-white', textClass, textSize]">
 		<span :class="[{tapered: underlineEffect}]">{{ text }}</span>
 	</h1>
 </template>

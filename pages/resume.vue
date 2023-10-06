@@ -90,10 +90,10 @@
 </script>
 
 <template>
-	<UxCursiveTitle text="Resume" />
+	<UxCursiveTitle text="Resume" class="mb-8" />
 	<div class="grid grid-cols-2 gap-6">
 		<div class="fancy mx-auto text-center">
-			<UxCursiveTitle text="Working Skills" text-size="text-5xl" :underline-effect="true" />
+			<UxCursiveTitle text="Working Skills" text-size="text-5xl" :underline-effect="true" class="mb-4" />
 			<div
 				v-for="(work, index) of workingSkills"
 				:key="index"
@@ -113,7 +113,7 @@
 			</div>
 		</div>
 		<div class="fancy mx-auto text-center">
-			<UxCursiveTitle text="Education" text-size="text-5xl" :underline-effect="true" />
+			<UxCursiveTitle text="Education" text-size="text-5xl" :underline-effect="true" class="mb-4" />
 			<div
 				v-for="(education, index) of educations"
 				:key="index"
