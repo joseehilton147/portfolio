@@ -1,4 +1,6 @@
 <script setup>
+	const colorMode = useColorMode()
+
 	const educations = ref([
 		{
 			role: 'Independent Open Source Developer',
@@ -71,6 +73,17 @@
 		},
 	])
 
+	function getColorClass(index, invert = false) {
+		const isDarkMode = colorMode.value === 'dark'
+		let colorClasses = isDarkMode ? ['bg-neutral-700', 'bg-neutral-600'] : ['bg-rose-50', 'bg-indigo-50']
+
+		if (invert) {
+			colorClasses = [colorClasses[1], colorClasses[0]]
+		}
+
+		return index % 2 === 0 ? colorClasses[0] : colorClasses[1]
+	}
+
 	useHead({
 		title: 'Resume',
 	})
@@ -84,11 +97,7 @@
 			<div
 				v-for="(work, index) of workingSkills"
 				:key="index"
-				:class="[
-					' rounded-md shadow-sm',
-					index % 2 === 0 ? 'bg-indigo-50' : 'bg-rose-50',
-					{'mb-4': workingSkills.length - 1 !== index},
-				]"
+				:class="[' rounded-md shadow-sm', getColorClass(index), {'mb-4': workingSkills.length - 1 !== index}]"
 			>
 				<div class="p-4 text-start">
 					<h1 class="text-lg font-medium dark:text-white">{{ work.role }}</h1>
@@ -110,7 +119,7 @@
 				:key="index"
 				:class="[
 					' rounded-md shadow-sm',
-					index % 2 === 0 ? 'bg-indigo-50' : 'bg-rose-50',
+					getColorClass(index, true),
 					{'mb-4': educations.length - 1 !== index},
 				]"
 			>
