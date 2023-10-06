@@ -3,37 +3,24 @@
 
 	const educations = ref([
 		{
-			role: 'Independent Open Source Developer',
-			company: 'Freelance',
-			actualJob: true,
+			InstitutionName: 'Universidade Federal de São Paulo',
+			course: 'Analysis and Systems Development',
+			typeOfCourse: 'Bachelor',
+			stillCoursing: true,
 			duration: {
-				start: '01/2021',
+				start: '01/2023',
 				end: null,
 			},
-			location: 'Remote',
-			type: 'Full-time',
 		},
 		{
-			role: 'Creative Technologist',
-			company: 'Google',
-			actualJob: false,
+			InstitutionName: 'Pontifícia Universidade Católica de São Paulo',
+			course: 'Photography',
+			typeOfCourse: 'Bachelor',
+			stillCoursing: false,
 			duration: {
 				start: '06/2016',
-				end: '11/2021',
+				end: '06/2017',
 			},
-			location: 'New York, USA',
-			type: 'Full-time',
-		},
-		{
-			role: 'Core Dev',
-			company: 'Facebook',
-			actualJob: false,
-			duration: {
-				start: '04/2008',
-				end: '05/2016',
-			},
-			location: 'San Francisco, USA',
-			type: 'Full-time',
 		},
 	])
 
@@ -124,14 +111,13 @@
 				]"
 			>
 				<div class="p-4 text-start">
-					<h1 class="text-lg font-medium dark:text-white">{{ education.role }}</h1>
-					<p class="text-sm font-semibold text-neutral-500">{{ education.company }} · {{ education.type }}</p>
+					<h1 class="text-lg font-medium dark:text-white">{{ education.InstitutionName }}</h1>
+					<p class="text-sm font-semibold text-neutral-500">
+						{{ education.typeOfCourse }} · {{ education.course }}
+					</p>
 					<p class="my-1 text-xs font-medium text-neutral-500">
 						{{ formatLocaleDate(education.duration.start) }} ·
-						{{ education.actualJob ? 'moment' : formatLocaleDate(education.duration.end) }}
-					</p>
-					<p class="text-xs font-medium text-neutral-500 dark:text-stone-300">
-						{{ education.location }}
+						{{ education.stillCoursing ? 'moment' : formatLocaleDate(education.duration.end) }}
 					</p>
 				</div>
 			</div>
