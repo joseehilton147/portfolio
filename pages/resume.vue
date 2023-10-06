@@ -90,7 +90,7 @@
 </script>
 
 <template>
-	<UxCursiveTitle text="Resume" class="mb-8" />
+	<UxCursiveTitle text="My resume" class="mb-8" />
 	<div class="grid grid-cols-2 gap-6">
 		<div class="fancy mx-auto text-center">
 			<UxCursiveTitle text="Working Skills" text-size="text-5xl" :underline-effect="true" class="mb-4" />
