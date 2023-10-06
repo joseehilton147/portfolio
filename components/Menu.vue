@@ -13,19 +13,14 @@
 			link: '/resume',
 		},
 		{
-			name: 'Works',
-			icon: 'line-md:edit',
-			link: '/works',
+			name: 'Projects',
+			icon: 'line-md:lightbulb',
+			link: '/projects',
 		},
 		{
 			name: 'Blog',
 			icon: 'line-md:laptop',
 			link: '/blog',
-		},
-		{
-			name: 'Hobby',
-			icon: 'line-md:coffee-loop',
-			link: '/hobby',
 		},
 	])
 

@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<UxCursiveTitle text="Hobby" />
+		<UxCursiveTitle text="Projects" />
 	</div>
 </template>
 
 <script setup>
 	useHead({
-		title: 'Hobby',
+		title: 'Projects',
 	})
 </script>
