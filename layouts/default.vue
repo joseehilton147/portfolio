@@ -58,7 +58,7 @@
 </script>
 
 <template>
-	<header class="container mt-8 flex justify-end">
+	<header class="container my-8 flex justify-end">
 		<div>
 			<Logo />
 			<div class="mx-auto mt-4 w-fit">
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 	</header>
-	<div class="container py-12">
+	<main class="container mb-8">
 		<div class="grid grid-cols-12 gap-12">
 			<div class="sticky top-24 col-span-3 h-fit rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
 				<PersonalCard />
@@ -80,7 +80,7 @@
 				<Menu />
 			</div>
 		</div>
-	</div>
+	</main>
 </template>
 
 <style scoped>

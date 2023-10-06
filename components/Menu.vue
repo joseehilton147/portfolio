@@ -18,9 +18,9 @@
 			link: '/projects',
 		},
 		{
-			name: 'Blog',
-			icon: 'line-md:laptop',
-			link: '/blog',
+			name: 'Articles',
+			icon: 'line-md:text-box',
+			link: '/articles',
 		},
 	])
 

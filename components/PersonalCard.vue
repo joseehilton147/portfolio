@@ -66,7 +66,7 @@
 		<div v-if="user.email" class="flex items-center">
 			<Icon
 				name="line-md:email-twotone-alt"
-				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
 			<p class="ml-3 cursor-default font-medium dark:text-white">{{ user.email }}</p>
 		</div>
@@ -74,7 +74,7 @@
 		<div v-if="user.location" class="flex items-center">
 			<Icon
 				name="line-md:home-md-twotone"
-				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
 			<p class="ml-3 cursor-default font-medium dark:text-white">
 				{{ user.location.city }}, {{ user.location.country }}
@@ -84,7 +84,7 @@
 		<div v-if="user.age" class="flex items-center">
 			<Icon
 				name="line-md:calendar"
-				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
 			<p class="ml-3 cursor-default font-medium dark:text-white">{{ user.age }} years</p>
 		</div>

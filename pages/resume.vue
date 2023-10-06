@@ -110,16 +110,7 @@
 		'Creativity',
 	])
 
-	function getColorClass(index, invert = false) {
-		const isDarkMode = colorMode.value === 'dark'
-		let colorClasses = isDarkMode ? ['bg-neutral-700', 'bg-neutral-600'] : ['bg-rose-50', 'bg-indigo-50']
-
-		if (invert) {
-			colorClasses = [colorClasses[1], colorClasses[0]]
-		}
-
-		return index % 2 === 0 ? colorClasses[0] : colorClasses[1]
-	}
+	const isDarkMode = computed(() => colorMode.value === 'dark')
 
 	useHead({
 		title: 'Resume',
@@ -127,108 +118,132 @@
 </script>
 
 <template>
-	<UxCursiveTitle text="My resume" class="mb-8" />
+	<ClientOnly>
+		<UxCursiveTitle text="My resume" class="mb-8" />
 
-	<div class="grid grid-cols-2 gap-6">
-		<div>
-			<UxCursiveTitle text="Experiences" text-size="text-5xl" class="mb-4 text-center" />
-			<div
-				v-for="(experience, index) of experiences"
-				:key="index"
-				:class="[' rounded-md shadow-sm', getColorClass(index), {'mb-4': experiences.length - 1 !== index}]"
-			>
-				<div class="p-4 text-start">
-					<h1 class="text-lg font-medium dark:text-white">{{ experience.role }}</h1>
-					<p class="text-sm font-semibold text-neutral-500">
-						{{ experience.company }} · {{ experience.type }}
-					</p>
-					<p class="my-1 text-xs font-medium text-neutral-500">
-						{{ formatLocaleDate(experience.duration.start) }} ·
-						{{ experience.actualJob ? 'moment' : formatLocaleDate(experience.duration.end) }}
-					</p>
-					<p class="text-xs font-medium text-neutral-500 dark:text-stone-300">
-						{{ experience.location }}
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<div>
-			<UxCursiveTitle text="Academic Life" text-size="text-5xl" class="mb-4 text-center" />
-			<div
-				v-for="(education, index) of academicLife"
-				:key="index"
-				:class="[
-					' rounded-md shadow-sm',
-					getColorClass(index, true),
-					{'mb-4': academicLife.length - 1 !== index},
-				]"
-			>
-				<div class="p-4 text-start">
-					<h1 class="text-lg font-medium dark:text-white">{{ education.InstitutionName }}</h1>
-					<p class="text-sm font-semibold text-neutral-500">
-						{{ education.typeOfCourse }} · {{ education.course }}
-					</p>
-					<p class="my-1 text-xs font-medium text-neutral-500">
-						{{ formatLocaleDate(education.duration.start) }} ·
-						{{ education.stillCoursing ? 'moment' : formatLocaleDate(education.duration.end) }}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="my-8">
-		<UxCursiveTitle text="Certifications" text-size="text-5xl text-center mb-4" />
 		<div class="grid grid-cols-2 gap-6">
-			<div
-				v-for="(certification, index) of certifications"
-				:key="index"
-				:class="[
-					' rounded-md shadow-sm',
-					getColorClass(index, true),
-					{'mb-4': certification.length - 1 !== index},
-				]"
-			>
-				<div class="p-4 text-start">
-					<h1 class="text-md font-medium dark:text-white">{{ certification.name }}</h1>
-					<p class="my-1 text-xs font-medium text-neutral-500">
-						{{ certification.company }} · {{ formatLocaleDate(certification.emissionDate) }}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="grid grid-cols-2 gap-6">
-		<div>
-			<UxCursiveTitle text="Skills" text-size="text-5xl" class="text-center" />
-			<div v-for="(skill, index) of skills" :key="index" class="my-4">
-				<h1 class="text-md text-start font-medium dark:text-white">{{ skill.name }}</h1>
-				<div class="flex h-5 rounded-md bg-neutral-600">
-					<div
-						class="skill-per relative h-5 w-0 rounded-md bg-indigo-500 transition"
-						:per="skill.level * 10"
-						:style="{width: `${skill.level * 10}%`}"
-					></div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<UxCursiveTitle text="Knowledges" text-size="text-5xl" class="mb-6 text-center" />
-			<div class="flex flex-wrap justify-center gap-4">
+			<div>
+				<UxCursiveTitle text="Experiences" text-size="text-5xl" class="mb-4 text-center" />
 				<div
-					v-for="(knowledge, index) of knowledges"
+					v-for="(experience, index) of experiences"
 					:key="index"
-					class="rounded-md bg-gray-100 px-4 py-2 dark:bg-neutral-600"
+					:class="[
+						' rounded-md shadow-sm',
+						isDarkMode
+							? index % 2 === 0
+								? 'bg-neutral-700'
+								: 'bg-neutral-600'
+							: index % 2 === 0
+							? 'bg-rose-50'
+							: 'bg-indigo-50',
+						{'mb-4': experiences.length - 1 !== index},
+					]"
 				>
-					<h1 class="text-md cursor-default text-start font-light dark:text-white">
-						{{ knowledge }}
-					</h1>
+					<div class="p-4 text-start">
+						<h1 class="text-lg font-medium dark:text-white">{{ experience.role }}</h1>
+						<p class="text-sm font-semibold text-neutral-500">
+							{{ experience.company }} · {{ experience.type }}
+						</p>
+						<p class="my-1 text-xs font-medium text-neutral-500">
+							{{ formatLocaleDate(experience.duration.start) }} ·
+							{{ experience.actualJob ? 'moment' : formatLocaleDate(experience.duration.end) }}
+						</p>
+						<p class="text-xs font-medium text-neutral-500 dark:text-stone-300">
+							{{ experience.location }}
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<UxCursiveTitle text="Academic Life" text-size="text-5xl" class="mb-4 text-center" />
+				<div
+					v-for="(education, index) of academicLife"
+					:key="index"
+					:class="[
+						' rounded-md shadow-sm',
+						isDarkMode
+							? index % 2 === 0
+								? 'bg-neutral-600'
+								: 'bg-neutral-700'
+							: index % 2 === 0
+							? 'bg-indigo-50'
+							: 'bg-rose-50',
+						{'mb-4': academicLife.length - 1 !== index},
+					]"
+				>
+					<div class="p-4 text-start">
+						<h1 class="text-lg font-medium dark:text-white">{{ education.InstitutionName }}</h1>
+						<p class="text-sm font-semibold text-neutral-500">
+							{{ education.typeOfCourse }} · {{ education.course }}
+						</p>
+						<p class="my-1 text-xs font-medium text-neutral-500">
+							{{ formatLocaleDate(education.duration.start) }} ·
+							{{ education.stillCoursing ? 'moment' : formatLocaleDate(education.duration.end) }}
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+		<div class="my-8">
+			<UxCursiveTitle text="Certifications" text-size="text-5xl text-center mb-4" />
+			<div class="grid grid-cols-2 gap-6">
+				<div
+					v-for="(certification, index) of certifications"
+					:key="index"
+					:class="[
+						' rounded-md shadow-sm',
+						isDarkMode
+							? index % 2 === 0
+								? 'bg-neutral-600'
+								: 'bg-neutral-700'
+							: index % 2 === 0
+							? 'bg-indigo-50'
+							: 'bg-rose-50',
+						{'mb-4': certification.length - 1 !== index},
+					]"
+				>
+					<div class="p-4 text-start">
+						<h1 class="text-md font-medium dark:text-white">{{ certification.name }}</h1>
+						<p class="my-1 text-xs font-medium text-neutral-500">
+							{{ certification.company }} · {{ formatLocaleDate(certification.emissionDate) }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid grid-cols-2 gap-6">
+			<div>
+				<UxCursiveTitle text="Skills" text-size="text-5xl" class="text-center" />
+				<div v-for="(skill, index) of skills" :key="index" class="my-4">
+					<h1 class="text-md text-start font-medium dark:text-white">{{ skill.name }}</h1>
+					<div class="flex h-5 rounded-md bg-neutral-600">
+						<div
+							class="skill-per relative h-5 w-0 rounded-md bg-indigo-500 transition"
+							:per="skill.level * 10"
+							:style="{width: `${skill.level * 10}%`}"
+						></div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<UxCursiveTitle text="Knowledges" text-size="text-5xl" class="mb-6 text-center" />
+				<div class="flex flex-wrap justify-center gap-4">
+					<div
+						v-for="(knowledge, index) of knowledges"
+						:key="index"
+						class="rounded-md bg-gray-100 px-4 py-2 dark:bg-neutral-600"
+					>
+						<h1 class="text-md cursor-default text-start font-light dark:text-white">
+							{{ knowledge }}
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ClientOnly>
 </template>
 
 <style scoped>
