@@ -44,10 +44,56 @@
 			return titleChunk ? `${titleChunk} - About` : 'About'
 		},
 	})
+
+	const swiperInstance = ref(null)
+
+	onMounted(async () => {
+		await nextTick()
+		const swiperParams = {
+			loop: true,
+			grabCursor: true,
+			autoplay: true,
+			navigation: true,
+			slidesPerView: 3,
+			spaceBetween: 20,
+			autoHeight: true,
+		}
+
+		Object.assign(swiperInstance.value, swiperParams)
+
+		swiperInstance.value.initialize()
+	})
+
+	const posts = ref([
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/1.jpg',
+		},
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/2.jpg',
+		},
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/3.jpg',
+		},
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/1.jpg',
+		},
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/2.jpg',
+		},
+		{
+			title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
+			image: '/images/posts/3.jpg',
+		},
+	])
 </script>
 
 <template>
-	<UxCursiveTitle text="About" />
+	<UxCursiveTitle text="Hello 👋" />
 	<p class="dark:text-white">
 		Make sure to include in your wheelhouse that ipo will be a game-changer, so dogpile that, or those options are
 		already baked in with this model, or organic growth, or per my previous email.
@@ -57,6 +103,7 @@
 		client. Even dead cats bounce pulling teeth, and to be inspired is to become creative, innovative and energized
 		we want this philosophy to trickle down to all our stakeholders.
 	</p>
+	<UxCursiveTitle text="What i do!" text-size="text-5xl" />
 	<div class="mt-8 grid grid-cols-2 gap-4">
 		<div v-for="(area, index) of areas" :key="index" :class="[' rounded-md shadow-sm', getColorClass(index)]">
 			<div class="relative px-6 py-4">
@@ -68,4 +115,22 @@
 			</div>
 		</div>
 	</div>
+	<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" />
+	<div>
+		<swiper-container ref="swiperInstance">
+			<swiper-slide v-for="(post, index) of posts" :key="index">
+				<img :src="post.image" :alt="post.title" class="rounded-md" />
+				<h1 class="mt-3 dark:text-white">{{ post.title }}</h1>
+			</swiper-slide>
+		</swiper-container>
+	</div>
 </template>
+
+<style>
+	.swiper-slide img {
+		display: block;
+		width: auto;
+		height: 35vh;
+		object-fit: contain;
+	}
+</style>

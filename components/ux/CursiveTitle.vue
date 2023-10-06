@@ -6,7 +6,7 @@
 		},
 		textClass: {
 			type: String,
-			default: 'my-5 text-7xl font-medium',
+			default: 'my-5 font-medium',
 		},
 		spacing: {
 			type: String,
@@ -14,7 +14,7 @@
 		},
 		textSize: {
 			type: String,
-			default: 'text-7xl',
+			default: 'text-8xl',
 		},
 	})
 </script>

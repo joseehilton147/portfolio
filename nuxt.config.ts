@@ -31,4 +31,14 @@ export default defineNuxtConfig({
 	experimental: {
 		viewTransition: true,
 	},
+
+	build: {
+		transpile: ['swiper'],
+	},
+
+	vue: {
+		compilerOptions: {
+			isCustomElement: tag => /swiper-slide|swiper-container/.test(tag),
+		},
+	},
 })
