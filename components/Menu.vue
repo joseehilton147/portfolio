@@ -13,11 +13,6 @@
 			link: '/resume',
 		},
 		{
-			name: 'Projects',
-			icon: 'line-md:lightbulb',
-			link: '/projects',
-		},
-		{
 			name: 'Articles',
 			icon: 'line-md:text-box',
 			link: '/articles',

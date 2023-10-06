@@ -2,13 +2,7 @@
 	const colorMode = useColorMode()
 	const isDarkMode = ref(false)
 
-	watch(isDarkMode, value => {
-		if (value) {
-			colorMode.preference = 'dark'
-		} else {
-			colorMode.preference = 'light'
-		}
-	})
+	watch(isDarkMode, value => (colorMode.preference = value ? 'dark' : 'light'))
 
 	/**
 	 * Credit to [@hooray](https://github.com/hooray)
@@ -51,9 +45,7 @@
 	}
 
 	onMounted(() => {
-		if (colorMode.preference === 'dark') {
-			isDarkMode.value = true
-		}
+		if (colorMode.preference === 'dark') isDarkMode.value = true
 	})
 </script>
 
@@ -76,7 +68,7 @@
 			<div class="col-span-7 rounded-md bg-white p-8 shadow-sm dark:bg-neutral-800">
 				<slot />
 			</div>
-			<div class="sticky top-24 col-span-2 h-fit rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
+			<div :class="['sticky top-24 col-span-2 h-fit  rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800']">
 				<Menu />
 			</div>
 		</div>
