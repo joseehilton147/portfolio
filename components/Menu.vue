@@ -41,7 +41,7 @@
 </script>
 
 <template>
-	<div class="flex h-full flex-col place-content-center">
+	<div class="flex flex-col">
 		<NuxtLink
 			v-for="(item, index) of updatedSidebarItems"
 			:key="index"

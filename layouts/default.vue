@@ -58,7 +58,7 @@
 </script>
 
 <template>
-	<header class="pt-10">
+	<header id="header" class="py-10">
 		<div class="container flex flex-col items-end">
 			<div class="flex flex-col items-center">
 				<Logo />
@@ -70,15 +70,15 @@
 			</div>
 		</div>
 	</header>
-	<div class="container py-10">
+	<div class="container">
 		<div class="grid grid-cols-12 gap-12">
-			<div class="col-span-3 self-center rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
+			<div class="sticky top-24 col-span-3 h-fit rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
 				<PersonalCard />
 			</div>
-			<div class="col-span-7 rounded-md bg-white p-4 px-12 shadow-sm dark:bg-neutral-800">
+			<div class="col-span-7 rounded-md bg-white px-12 py-4 shadow-sm dark:bg-neutral-800">
 				<slot />
 			</div>
-			<div class="col-span-2 self-center rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
+			<div class="sticky top-24 col-span-2 h-fit rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
 				<Menu />
 			</div>
 		</div>

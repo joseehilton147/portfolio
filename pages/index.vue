@@ -103,7 +103,7 @@
 		client. Even dead cats bounce pulling teeth, and to be inspired is to become creative, innovative and energized
 		we want this philosophy to trickle down to all our stakeholders.
 	</p>
-	<UxCursiveTitle text="What i do!" text-size="text-5xl" />
+	<UxCursiveTitle text="What i do!" text-size="text-5xl" :underline-effect="true" />
 	<div class="mt-8 grid grid-cols-2 gap-4">
 		<div v-for="(area, index) of areas" :key="index" :class="[' rounded-md shadow-sm', getColorClass(index)]">
 			<div class="relative px-6 py-4">
@@ -115,7 +115,7 @@
 			</div>
 		</div>
 	</div>
-	<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" />
+	<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" :underline-effect="true" />
 	<div>
 		<swiper-container ref="swiperInstance">
 			<swiper-slide v-for="(post, index) of posts" :key="index">
