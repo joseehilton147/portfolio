@@ -51,12 +51,10 @@
 		await nextTick()
 		const swiperParams = {
 			loop: true,
-			grabCursor: true,
 			autoplay: true,
 			navigation: true,
 			slidesPerView: 3,
 			spaceBetween: 20,
-			autoHeight: true,
 		}
 
 		Object.assign(swiperInstance.value, swiperParams)

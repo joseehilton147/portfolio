@@ -24,7 +24,7 @@
 		},
 	])
 
-	const workingSkills = ref([
+	const experiences = ref([
 		{
 			role: 'Independent Open Source Developer',
 			company: 'Freelance',
@@ -80,27 +80,29 @@
 	<UxCursiveTitle text="My resume" class="mb-8" />
 	<div class="grid grid-cols-2 gap-6">
 		<div class="fancy mx-auto text-center">
-			<UxCursiveTitle text="Working Skills" text-size="text-5xl" :underline-effect="true" class="mb-4" />
+			<UxCursiveTitle text="Experiences" text-size="text-5xl" :underline-effect="true" class="mb-4" />
 			<div
-				v-for="(work, index) of workingSkills"
+				v-for="(experience, index) of experiences"
 				:key="index"
-				:class="[' rounded-md shadow-sm', getColorClass(index), {'mb-4': workingSkills.length - 1 !== index}]"
+				:class="[' rounded-md shadow-sm', getColorClass(index), {'mb-4': experiences.length - 1 !== index}]"
 			>
 				<div class="p-4 text-start">
-					<h1 class="text-lg font-medium dark:text-white">{{ work.role }}</h1>
-					<p class="text-sm font-semibold text-neutral-500">{{ work.company }} · {{ work.type }}</p>
+					<h1 class="text-lg font-medium dark:text-white">{{ experience.role }}</h1>
+					<p class="text-sm font-semibold text-neutral-500">
+						{{ experience.company }} · {{ experience.type }}
+					</p>
 					<p class="my-1 text-xs font-medium text-neutral-500">
-						{{ formatLocaleDate(work.duration.start) }} ·
-						{{ work.actualJob ? 'moment' : formatLocaleDate(work.duration.end) }}
+						{{ formatLocaleDate(experience.duration.start) }} ·
+						{{ experience.actualJob ? 'moment' : formatLocaleDate(experience.duration.end) }}
 					</p>
 					<p class="text-xs font-medium text-neutral-500 dark:text-stone-300">
-						{{ work.location }}
+						{{ experience.location }}
 					</p>
 				</div>
 			</div>
 		</div>
 		<div class="fancy mx-auto text-center">
-			<UxCursiveTitle text="Education" text-size="text-5xl" :underline-effect="true" class="mb-4" />
+			<UxCursiveTitle text="Academic Life" text-size="text-5xl" :underline-effect="true" class="mb-4" />
 			<div
 				v-for="(education, index) of educations"
 				:key="index"
