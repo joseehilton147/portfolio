@@ -73,7 +73,7 @@
 		<hr class="dark:border-neutral-800" />
 		<div v-if="user.location" class="flex items-center">
 			<Icon
-				name="line-md:home-md-twotone"
+				name="line-md:map-marker"
 				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
 			<p class="ml-3 cursor-default font-medium dark:text-white">
