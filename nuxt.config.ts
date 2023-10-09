@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 	},
 
 	build: {
-		transpile: ['swiper'],
+		transpile: ['swiper', 'primevue'],
 	},
 
 	vue: {

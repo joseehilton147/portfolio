@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"@vuepic/vue-datepicker": "^7.0.0",
+		"primevue": "^3.35.0",
 		"swiper": "^10.3.1"
 	}
 }
