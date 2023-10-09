@@ -39,11 +39,11 @@
 			>
 				<div>
 					<span
-						class="inline-block rounded bg-indigo-50 px-2 py-1 text-xs font-medium tracking-widest text-indigo-500"
+						class="inline-block cursor-default rounded bg-indigo-50 px-2 py-1 text-xs font-medium tracking-widest text-indigo-500"
 					>
 						{{ article.category }}
 					</span>
-					<h2 class="title-font my-4 text-xl font-medium text-neutral-800 dark:text-white">
+					<h2 class="title-font my-4 cursor-pointer text-xl font-medium text-neutral-800 dark:text-white">
 						{{ article.title }}
 					</h2>
 					<p class="text-md mb-2 line-clamp-4 leading-relaxed text-neutral-700 dark:text-white">
@@ -51,58 +51,33 @@
 					</p>
 				</div>
 				<div class="mt-4 flex items-center justify-center self-end">
-					<button class="flex rounded-md bg-indigo-500 px-4 py-2 text-white duration-300 hover:bg-indigo-600">
-						<span class="mr-1">Read More</span>
-						<Icon name="line-md:chevron-small-double-right" class="h-6 w-6" />
-					</button>
+					<Button
+						class="flex rounded-md bg-indigo-500 px-4 py-2 text-white duration-300 hover:bg-indigo-600"
+						label="Read More"
+					>
+						<template #icon>
+							<Icon name="line-md:chevron-small-double-right" class="h-6 w-6" />
+						</template>
+					</Button>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<div class="mt-8 flex items-center justify-center">
-		<!-- Previous Button -->
-		<a
-			href="#"
-			class="mr-3 flex h-10 items-center justify-center rounded-md border border-gray-300 bg-white px-4 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+		<NuxtLink
+			to="/"
+			class="mr-3 flex items-center justify-center rounded-md bg-indigo-500 px-4 py-2 text-lg font-medium text-white duration-300 hover:bg-indigo-600"
 		>
-			<svg
-				class="mr-2 h-3.5 w-3.5"
-				aria-hidden="true"
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 14 10"
-			>
-				<path
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M13 5H1m0 0 4 4M1 5l4-4"
-				/>
-			</svg>
+			<Icon name="line-md:arrow-small-left" class="mr-2 h-3.5 w-3.5" />
 			Previous
-		</a>
-		<a
-			href="#"
-			class="flex h-10 items-center justify-center rounded-lg border border-gray-300 bg-white px-4 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+		</NuxtLink>
+		<NuxtLink
+			to="/"
+			class="flex items-center justify-center rounded-md bg-indigo-500 px-4 py-2 text-lg font-medium text-white duration-300 hover:bg-indigo-600"
 		>
 			Next
-			<svg
-				class="ml-2 h-3.5 w-3.5"
-				aria-hidden="true"
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 14 10"
-			>
-				<path
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M1 5h12m0 0L9 1m4 4L9 9"
-				/>
-			</svg>
-		</a>
+			<Icon name="line-md:arrow-small-right" class="ml-2 h-3.5 w-3.5" />
+		</NuxtLink>
 	</div>
 </template>

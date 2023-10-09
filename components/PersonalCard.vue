@@ -89,9 +89,13 @@
 			<p class="ml-3 cursor-default font-medium dark:text-white">{{ user.age }} years</p>
 		</div>
 	</div>
-	<button
-		class="mt-5 w-full rounded-md border-0 bg-indigo-500 px-6 py-3 text-2xl font-medium text-white duration-300 hover:bg-indigo-600 focus:outline-none"
+	<Button
+		label="Download CV"
+		class="mt-5 w-full rounded-md border-0 bg-indigo-500 py-2 font-medium text-white duration-300 hover:bg-indigo-600 focus:outline-none"
+		size="large"
 	>
-		Download CV
-	</button>
+		<template #icon>
+			<Icon name="line-md:downloading-loop" class="h-8 w-8" />
+		</template>
+	</Button>
 </template>
