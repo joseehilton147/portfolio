@@ -44,32 +44,72 @@
 		})
 	}
 
+	const displayMobileMenu = ref(false)
+
 	onMounted(() => {
 		if (colorMode.preference === 'dark') isDarkMode.value = true
 	})
 </script>
 
 <template>
-	<header class="container my-8 flex justify-end">
+	<header
+		:class="[
+			'container flex',
+			{'my-8 justify-end': $device.isDesktop},
+			{'my-4  justify-center': $device.isMobileOrTablet},
+		]"
+	>
 		<div>
-			<Logo />
-			<div class="mx-auto mt-4 w-fit">
-				<button class="tdnn relative cursor-pointer" @click="toggleDark">
-					<div class="moon absolute block"></div>
-				</button>
+			<LogoComponent />
+			<div class="mx-auto mt-4 flex w-fit place-items-center">
+				<div :class="[{'mr-4': $device.isMobileOrTablet}]">
+					<button class="tdnn relative cursor-pointer" @click="toggleDark">
+						<div class="moon absolute block"></div>
+					</button>
+				</div>
+				<div
+					:class="['cursor-pointer', {hidden: $device.isDesktop}]"
+					@click="displayMobileMenu = !displayMobileMenu"
+				>
+					<Icon
+						:name="displayMobileMenu ? 'line-md:menu-to-close-transition' : 'line-md:menu'"
+						class="h-12 w-12 dark:text-white"
+					/>
+					<div class="relative">
+						<MenuComponent v-if="displayMobileMenu" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</header>
 	<main class="container mb-8">
-		<div class="grid grid-cols-12 gap-12">
-			<div class="sticky top-24 col-span-3 h-fit rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800">
+		<div :class="[{'mx-4': $device.isMobileOrTablet}, {'grid grid-cols-12 gap-12': $device.isDesktop}]">
+			<div
+				:class="[
+					'h-fit rounded-md bg-white p-2 shadow-sm dark:bg-neutral-800',
+					{'sticky top-24 col-span-3 p-4': $device.isDesktop},
+					{'mt-24': $device.isMobileOrTablet},
+				]"
+			>
 				<PersonalCard />
 			</div>
-			<div class="col-span-7 rounded-md bg-white p-8 shadow-sm dark:bg-neutral-800">
+			<div
+				:class="[
+					'rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800',
+					{'col-span-7 p-8': $device.isDesktop},
+					{'my-8': $device.isMobileOrTablet},
+				]"
+			>
 				<slot />
 			</div>
-			<div :class="['sticky top-24 col-span-2 h-fit  rounded-md bg-white p-4 shadow-sm dark:bg-neutral-800']">
-				<Menu />
+			<div
+				:class="[
+					'h-fit rounded-md bg-white p-2 shadow-sm dark:bg-neutral-800',
+					{hidden: $device.isMobileOrTablet},
+					{'sticky top-24 col-span-2 p-4': $device.isDesktop},
+				]"
+			>
+				<MenuComponent />
 			</div>
 		</div>
 	</main>

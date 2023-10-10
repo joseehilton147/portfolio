@@ -112,6 +112,17 @@
 
 	const isDarkMode = computed(() => colorMode.value === 'dark')
 
+	const {isMobile} = useDevice()
+	const resumeRef = ref(null)
+
+	onMounted(() => {
+		if (isMobile) {
+			setTimeout(() => {
+				resumeRef.value.scrollIntoView({behavior: 'smooth'})
+			}, 100)
+		}
+	})
+
 	useHead({
 		title: 'Resume',
 	})
@@ -119,11 +130,12 @@
 
 <template>
 	<ClientOnly>
-		<UxCursiveTitle text="My resume" class="mb-8" />
-
-		<div class="grid grid-cols-2 gap-6">
+		<div ref="resumeRef">
+			<UxCursiveTitle text="My resume" class="mb-8" />
+		</div>
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			<div>
-				<UxCursiveTitle text="Experiences" text-size="text-5xl" class="mb-4 text-center" />
+				<UxCursiveTitle text="Experiences" text-size="text-4xl md:text-5xl" class="mb-4 text-center" />
 				<div
 					v-for="(experience, index) of experiences"
 					:key="index"
@@ -156,7 +168,7 @@
 			</div>
 
 			<div>
-				<UxCursiveTitle text="Academic Life" text-size="text-5xl" class="mb-4 text-center" />
+				<UxCursiveTitle text="Academic Life" text-size="text-4xl md:text-5xl" class="mb-4 text-center" />
 				<div
 					v-for="(education, index) of academicLife"
 					:key="index"
@@ -187,8 +199,8 @@
 		</div>
 
 		<div class="my-8">
-			<UxCursiveTitle text="Certifications" text-size="text-5xl text-center mb-4" />
-			<div class="grid grid-cols-2 gap-6">
+			<UxCursiveTitle text="Certifications" text-size="text-4xl md:text-5xl text-center mb-4" />
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 				<div
 					v-for="(certification, index) of certifications"
 					:key="index"
@@ -214,9 +226,9 @@
 			</div>
 		</div>
 
-		<div class="grid grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			<div>
-				<UxCursiveTitle text="Skills" text-size="text-5xl" class="text-center" />
+				<UxCursiveTitle text="Skills" text-size="text-4xl md:text-5xl" class="text-center" />
 				<div v-for="(skill, index) of skills" :key="index" class="my-4">
 					<h1 class="text-md text-start font-medium dark:text-white">{{ skill.name }}</h1>
 					<div class="flex h-5 rounded-md bg-neutral-600">
@@ -229,7 +241,7 @@
 				</div>
 			</div>
 			<div>
-				<UxCursiveTitle text="Knowledges" text-size="text-5xl" class="mb-6 text-center" />
+				<UxCursiveTitle text="Knowledges" text-size="text-4xl md:text-5xl" class="mb-6 text-center" />
 				<div class="flex flex-wrap justify-center gap-4">
 					<div
 						v-for="(knowledge, index) of knowledges"

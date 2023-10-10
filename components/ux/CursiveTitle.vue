@@ -10,7 +10,7 @@
 		},
 		textSize: {
 			type: String,
-			default: 'text-8xl',
+			default: 'text-6xl md:text-8xl',
 		},
 	})
 </script>

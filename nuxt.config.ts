@@ -17,7 +17,11 @@ export default defineNuxtConfig({
 
 	css: ['~/assets/styles/main.css'],
 
-	modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+	modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/device'],
+
+	device: {
+		refreshOnResize: true,
+	},
 
 	colorMode: {
 		classSuffix: '',

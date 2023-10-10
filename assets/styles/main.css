@@ -1,17 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
-@import url("https://fonts.googleapis.com/css?family=Poppins:900i");
 
 * {
     box-sizing: border-box;
-}
-
-.font-rancho {
-    font-family: 'Rancho', cursive;
-}
-
-.font-poppins {
-    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -20,41 +11,13 @@ body {
 
 	background: linear-gradient(245deg, #90c1ec, #fffde4);
     background-size: 400% 400%;
-    -webkit-animation: gradientBG 15s ease infinite;
-    -moz-animation: gradientBG 15s ease infinite;
-    -o-animation: gradientBG 15s ease infinite;
-    animation: gradientBG 15s ease infinite;
 }
-
-
 
 .dark body {
 	background: linear-gradient(245deg, #464646,#353535);
     background-size: 400% 400%;
-
-    -webkit-animation: gradientBG 15s ease infinite;
-    -moz-animation: gradientBG 15s ease infinite;
-    -o-animation: gradientBG 15s ease infinite;
-    animation: gradientBG 15s ease infinite;
 }
 
-@-webkit-keyframes gradientBG {
-    0%{background-position:0% 4%}
-    50%{background-position:100% 97%}
-    100%{background-position:0% 4%}
-}
-@-moz-keyframes gradientBG {
-    0%{background-position:0% 4%}
-    50%{background-position:100% 97%}
-    100%{background-position:0% 4%}
-}
-@-o-keyframes gradientBG {
-    0%{background-position:0% 4%}
-    50%{background-position:100% 97%}
-    100%{background-position:0% 4%}
-}
-@keyframes gradientBG {
-    0%{background-position:0% 4%}
-    50%{background-position:100% 97%}
-    100%{background-position:0% 4%}
+.font-rancho {
+    font-family: 'Rancho', cursive;
 }

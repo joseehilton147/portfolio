@@ -47,13 +47,15 @@
 
 	const swiperInstance = ref(null)
 
+	const {isMobile} = useDevice()
+
 	onMounted(async () => {
 		await nextTick()
 		const swiperParams = {
 			loop: true,
 			autoplay: true,
 			navigation: true,
-			slidesPerView: 3,
+			slidesPerView: isMobile ? 1 : 3,
 			spaceBetween: 20,
 		}
 
@@ -102,19 +104,19 @@
 			touch client. Even dead cats bounce pulling teeth, and to be inspired is to become creative, innovative and
 			energized we want this philosophy to trickle down to all our stakeholders.
 		</p>
-		<UxCursiveTitle text="What i do!" text-size="text-5xl" class="my-8" />
-		<div class="grid grid-cols-2 gap-4">
+		<UxCursiveTitle text="What i do!" text-size="text-4xl md:text-5xl" class="my-8" />
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<div v-for="(area, index) of areas" :key="index" :class="[' rounded-md shadow-sm', getColorClass(index)]">
 				<div class="relative px-6 py-4">
-					<h1 class="mb-2 text-2xl font-medium dark:text-white">{{ area.name }}</h1>
-					<p class="text-base font-medium text-neutral-500 dark:text-stone-300">
+					<h1 class="mb-2 text-xl font-medium dark:text-white md:text-2xl">{{ area.name }}</h1>
+					<p class="text-sm font-medium text-neutral-500 dark:text-stone-300 md:text-base">
 						{{ area.description }}
 					</p>
 					<Icon :name="area.icon" class="absolute bottom-0 right-2 h-24 w-24 opacity-5 dark:opacity-10" />
 				</div>
 			</div>
 		</div>
-		<UxCursiveTitle text="Check my latest articles..." text-size="text-5xl" class="my-8" />
+		<UxCursiveTitle text="Check my latest articles..." text-size="text-4xl md:text-5xl" class="my-8" />
 		<div>
 			<swiper-container ref="swiperInstance">
 				<swiper-slide v-for="(post, index) of posts" :key="index">

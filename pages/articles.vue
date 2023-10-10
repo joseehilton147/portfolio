@@ -23,34 +23,39 @@
 		},
 	])
 
+	const {isMobile} = useDevice()
+	const articlesRef = ref(null)
+
+	onMounted(() => {
+		if (isMobile) {
+			setTimeout(() => {
+				articlesRef.value.scrollIntoView({behavior: 'smooth'})
+			}, 100)
+		}
+	})
+
 	useHead({
 		title: 'Articles',
 	})
 </script>
 
 <template>
-	<UxCursiveTitle text="Latest articles" class="mb-8" />
+	<div ref="articlesRef">
+		<UxCursiveTitle text="Latest articles" class="mb-8" />
+	</div>
 	<section>
-		<div class="grid grid-cols-2 gap-4">
-			<div
-				v-for="(article, index) of articles"
-				:key="index"
-				class="flex flex-col justify-between rounded-md bg-gray-50 px-6 py-4 dark:bg-neutral-700"
-			>
-				<div>
-					<span
-						class="inline-block cursor-default rounded bg-indigo-50 px-2 py-1 text-xs font-medium tracking-widest text-indigo-500"
-					>
-						{{ article.category }}
-					</span>
-					<h2 class="title-font my-4 cursor-pointer text-xl font-medium text-neutral-800 dark:text-white">
-						{{ article.title }}
-					</h2>
-					<p class="text-md mb-2 line-clamp-4 leading-relaxed text-neutral-700 dark:text-white">
-						{{ article.description }}
-					</p>
-				</div>
-				<div class="mt-4 flex items-center justify-center self-end">
+		<div class="grid gap-4 md:grid-cols-2">
+			<UxCardComponent v-for="(article, index) of articles" :key="index">
+				<template #taxonomy>
+					{{ article.category }}
+				</template>
+				<template #title>
+					{{ article.title }}
+				</template>
+				<template #description>
+					{{ article.description }}
+				</template>
+				<template #footer>
 					<Button
 						class="flex rounded-md bg-indigo-500 px-4 py-2 text-white duration-300 hover:bg-indigo-600"
 						label="Read More"
@@ -59,8 +64,8 @@
 							<Icon name="line-md:chevron-small-double-right" class="h-6 w-6" />
 						</template>
 					</Button>
-				</div>
-			</div>
+				</template>
+			</UxCardComponent>
 		</div>
 	</section>
 
