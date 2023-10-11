@@ -230,7 +230,7 @@
 			<div>
 				<UxCursiveTitle text="Skills" text-size="text-4xl md:text-5xl" class="text-center" />
 				<div v-for="(skill, index) of skills" :key="index" class="my-4">
-					<h1 class="text-md text-start font-medium dark:text-white">{{ skill.name }}</h1>
+					<h1 class="text-start text-base font-medium dark:text-white">{{ skill.name }}</h1>
 					<div class="flex h-5 rounded-md bg-neutral-600">
 						<div
 							class="skill-per relative h-5 w-0 rounded-md bg-indigo-500 transition"
@@ -248,7 +248,7 @@
 						:key="index"
 						class="rounded-md bg-gray-100 px-4 py-2 dark:bg-neutral-600"
 					>
-						<h1 class="text-md cursor-default text-start font-light dark:text-white">
+						<h1 class="cursor-default text-start text-base font-light dark:text-white">
 							{{ knowledge }}
 						</h1>
 					</div>
