@@ -46,6 +46,10 @@
 
 	const displayMobileMenu = ref(false)
 
+	const route = useRoute()
+
+	const isTaxonomyPage = computed(() => route.path.includes('/articles/'))
+
 	onMounted(() => {
 		if (colorMode.preference === 'dark') isDarkMode.value = true
 	})
@@ -89,6 +93,7 @@
 					'h-fit rounded-md bg-white p-2 shadow-sm dark:bg-neutral-800',
 					{'sticky top-24 col-span-3 p-4': $device.isDesktop},
 					{'mt-24': $device.isMobileOrTablet},
+					{hidden: $device.isMobileOrTablet && isTaxonomyPage},
 				]"
 			>
 				<PersonalCard />

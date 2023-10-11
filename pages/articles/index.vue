@@ -1,22 +1,26 @@
 <script setup>
 	const articles = ref([
 		{
+			id: 1,
 			title: 'Roof party normcore before',
 			category: 'AWS',
 			description:
 				'Ut maximus urna vitae congue vulputate. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur a fermentum sapien, id elementum ante. Aenean eget felis iaculis, tincidunt dui ut, consectetur magna. Etiam in rhoncus tortor, id imperdiet metus. Cras vel sodales nunc. Proin ex sapien, consequat feugiat tellus sed, vehicula faucibus leo. Vestibulum quis lorem in odio gravida porta in sed nisi. Etiam sapien velit, semper at metus eu, sagittis porta purus. Fusce ut eleifend leo, ac porta diam. Curabitur laoreet eros sit amet nibh posuere, id pretium nibh pellentesque.',
 		},
 		{
+			id: 2,
 			title: 'Pinterest occupy authentic',
 			category: 'NoSQL',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		},
 		{
+			id: 3,
 			title: 'Artisan reprehenderit in',
 			category: 'AWS',
 			description: 'Aenean eget felis iaculis, tincidunt dui ut, consectetur magna.',
 		},
 		{
+			id: 4,
 			title: 'Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.',
 			category: 'SQL',
 			description: 'Quisque euismod, quam eget dignissim rhoncus, diam nunc.',
@@ -45,27 +49,7 @@
 	</div>
 	<section>
 		<div class="grid gap-4 md:grid-cols-2">
-			<UxCardComponent v-for="(article, index) of articles" :key="index">
-				<template #taxonomy>
-					{{ article.category }}
-				</template>
-				<template #title>
-					{{ article.title }}
-				</template>
-				<template #description>
-					{{ article.description }}
-				</template>
-				<template #footer>
-					<Button
-						class="flex rounded-md bg-indigo-500 px-4 py-2 text-white duration-300 hover:bg-indigo-600"
-						label="Read More"
-					>
-						<template #icon>
-							<Icon name="line-md:chevron-small-double-right" class="h-6 w-6" />
-						</template>
-					</Button>
-				</template>
-			</UxCardComponent>
+			<ArticlesCardComponent :articles="articles" />
 		</div>
 	</section>
 
