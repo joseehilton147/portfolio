@@ -44,13 +44,14 @@
 			:key="index"
 			:to="item.link"
 			:class="[
-				'flex items-center justify-center bg-gray-100 duration-300 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:bg-neutral-600 dark:text-white dark:hover:bg-indigo-500',
+				'flex items-center justify-center  duration-300 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:text-white dark:hover:bg-indigo-500',
 				{'flex-col rounded-md p-4': $device.isDesktop},
 				{'px-8 py-4': $device.isMobileOrTablet},
 				{'mb-4': sidebarItems.length - 1 !== index},
 				{'rounded-t-lg': $device.isMobileOrTablet && index === 0},
 				{'rounded-b-lg': $device.isMobileOrTablet && index === sidebarItems.length - 1},
 				{'bg-indigo-500 text-white dark:bg-indigo-500': item.active},
+				{'bg-gray-100 dark:bg-neutral-700': !item.active},
 			]"
 		>
 			<Icon :name="item.icon" :class="['dark:text-white', $device.isDesktop ? 'h-12 w-12' : 'h-8 w-8']" />

@@ -4,7 +4,7 @@
 	const areas = ref([
 		{
 			icon: 'fluent-mdl2:modeling-view',
-			name: 'Data Modeling',
+			name: 'Data Modelling',
 			description:
 				'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam euismod tincidunt volutpat.',
 		},

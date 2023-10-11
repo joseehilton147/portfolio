@@ -62,7 +62,7 @@
 			<Icon :name="socialMedia.icon" :class="`h-8 w-8`" />
 		</NuxtLink>
 	</div>
-	<div class="flex flex-col gap-4 rounded-md bg-gray-100 p-4 dark:bg-neutral-600">
+	<div class="flex flex-col gap-4 rounded-md bg-gray-100 p-4 dark:bg-neutral-700">
 		<div v-if="user.email" class="flex items-center">
 			<Icon
 				name="line-md:email-twotone-alt"
