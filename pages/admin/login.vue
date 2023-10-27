@@ -1,4 +1,18 @@
-<script setup></script>
+<script setup>
+	import Bowser from 'bowser'
+
+	const authStore = useAuthStore()
+
+	const user = reactive({
+		email: '',
+		password: '',
+	})
+
+	async function handleLogin() {
+		// eslint-disable-next-line import/no-named-as-default-member
+		await authStore.doPostLogin({...user, device: Bowser.parse(window.navigator.userAgent)})
+	}
+</script>
 
 <template>
 	<div class="flex min-h-full flex-col justify-center">
@@ -10,6 +24,7 @@
 					<div class="mt-2">
 						<input
 							id="email"
+							v-model="user.email"
 							name="email"
 							type="email"
 							autocomplete="email"
@@ -24,6 +39,7 @@
 					<div class="mt-2">
 						<input
 							id="password"
+							v-model="user.password"
 							name="password"
 							type="password"
 							autocomplete="current-password"
@@ -34,15 +50,16 @@
 				</div>
 
 				<div>
-					<Button
+					<PrimeButton
 						label="Sign in"
 						class="w-full rounded-md border-0 bg-indigo-500 py-2 font-medium text-white duration-300 hover:bg-indigo-600 focus:outline-none"
 						size="large"
+						@click="handleLogin"
 					>
 						<template #icon>
 							<Icon name="line-md:account" class="h-8 w-8" />
 						</template>
-					</Button>
+					</PrimeButton>
 				</div>
 			</form>
 		</div>

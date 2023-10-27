@@ -17,7 +17,34 @@ export default defineNuxtConfig({
 
 	css: ['~/assets/styles/main.css'],
 
-	modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/device'],
+	modules: [
+		'nuxt-icon',
+		'@nuxtjs/tailwindcss',
+		'@nuxtjs/color-mode',
+		'@nuxtjs/device',
+		'nuxt-primevue',
+		'@pinia/nuxt',
+		'@pinia-plugin-persistedstate/nuxt',
+	],
+
+	imports: {
+		dirs: ['./stores'],
+	},
+
+	pinia: {
+		autoImports: ['defineStore', 'acceptHMRUpdate'],
+	},
+
+	primevue: {
+		options: {
+			ripple: true,
+			inputStyle: 'filled',
+		},
+		importPT: {as: 'Tailwind', from: 'primevue/passthrough/tailwind'},
+		components: {
+			prefix: 'Prime',
+		},
+	},
 
 	device: {
 		refreshOnResize: true,
@@ -44,5 +71,9 @@ export default defineNuxtConfig({
 		compilerOptions: {
 			isCustomElement: tag => /swiper-slide|swiper-container/.test(tag),
 		},
+	},
+
+	runtimeConfig: {
+		API_URL_SERVER: process.env.NUXT_PUBLIC_API_BASE,
 	},
 })

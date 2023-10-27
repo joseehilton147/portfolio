@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
@@ -10,14 +10,14 @@ body {
 	position: relative;
 
 	background: linear-gradient(245deg, #90c1ec, #fffde4);
-    background-size: 400% 400%;
+	background-size: 400% 400%;
 }
 
 .dark body {
-	background: linear-gradient(245deg, #464646,#353535);
-    background-size: 400% 400%;
+	background: linear-gradient(245deg, #464646, #353535);
+	background-size: 400% 400%;
 }
 
 .font-rancho {
-    font-family: 'Rancho', cursive;
+	font-family: 'Rancho', cursive;
 }

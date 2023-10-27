@@ -1,4 +1,8 @@
 <script setup>
+	const authStore = useAuthStore()
+
+	const user = ref(authStore.getUser)
+
 	const colorMode = useColorMode()
 
 	const areas = ref([
@@ -94,7 +98,7 @@
 
 <template>
 	<ClientOnly>
-		<UxCursiveTitle text="Hello 👋" class="mb-8" />
+		<UxCursiveTitle text="👋 Hello" class="mb-8" />
 		<p class="dark:text-white">
 			Make sure to include in your wheelhouse that ipo will be a game-changer, so dogpile that, or those options
 			are already baked in with this model, or organic growth, or per my previous email.
@@ -116,7 +120,7 @@
 				</div>
 			</div>
 		</div>
-		<UxCursiveTitle text="Check my latest articles..." text-size="text-4xl md:text-5xl" class="my-8" />
+		<UxCursiveTitle text="my Check latest articles..." text-size="text-4xl md:text-5xl" class="my-8" />
 		<div>
 			<swiper-container ref="swiperInstance">
 				<swiper-slide v-for="(post, index) of posts" :key="index">
