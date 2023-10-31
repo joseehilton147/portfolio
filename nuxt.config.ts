@@ -43,6 +43,7 @@ export default defineNuxtConfig({
 		importPT: {as: 'Tailwind', from: 'primevue/passthrough/tailwind'},
 		components: {
 			prefix: 'Prime',
+			exclude: ['Editor', 'Chart']
 		},
 	},
 
