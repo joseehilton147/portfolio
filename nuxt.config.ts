@@ -15,16 +15,17 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ['~/assets/styles/main.css'],
+	css: ['~/assets/styles/main.css', '@unocss/reset/tailwind.css'],
 
 	modules: [
 		'nuxt-icon',
-		'@nuxtjs/tailwindcss',
+		'@unocss/nuxt',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/device',
 		'nuxt-primevue',
 		'@pinia/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
+		'@nuxt/image',
 	],
 
 	imports: {
@@ -43,7 +44,7 @@ export default defineNuxtConfig({
 		importPT: {as: 'Tailwind', from: 'primevue/passthrough/tailwind'},
 		components: {
 			prefix: 'Prime',
-			exclude: ['Editor', 'Chart']
+			exclude: ['Editor', 'Chart'],
 		},
 	},
 
@@ -76,5 +77,9 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		API_URL_SERVER: process.env.NUXT_PUBLIC_API_BASE,
+	},
+
+	devtools: {
+		enabled: false,
 	},
 })
