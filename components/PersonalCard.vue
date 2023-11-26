@@ -40,15 +40,15 @@
 </script>
 
 <template>
-	<img src="~/assets/images/avatar.png" class="rounded-md mx-auto -mt-20 w-3/4" alt="Emma Doe" />
-	<div class="cursor-default my-4 dark:text-white">
-		<h1 class="font-medium text-center text-2xl">{{ user.name }}</h1>
-		<p class="flex my-2 items-center justify-center align-middle italic">"{{ user.phrase }}"</p>
-		<div class="rounded-md bg-gray-100 mx-8 py-3 dark:bg-neutral-700">
-			<p class="font-medium text-center">{{ user.role }}</p>
+	<img src="~/assets/images/avatar.png" class="mx-auto -mt-20 w-3/4 rounded-md" alt="Emma Doe" />
+	<div class="my-4 cursor-default dark:text-white">
+		<h1 class="text-center text-2xl font-medium">{{ user.name }}</h1>
+		<p class="my-2 flex items-center justify-center align-middle italic">"{{ user.phrase }}"</p>
+		<div class="mx-8 rounded-md bg-gray-100 py-3 dark:bg-neutral-700">
+			<p class="text-center font-medium">{{ user.role }}</p>
 		</div>
 	</div>
-	<div class="flex my-4 justify-center align-middle">
+	<div class="my-4 flex justify-center align-middle">
 		<NuxtLink
 			v-for="(socialMedia, index) of socialMedias"
 			:key="index"
@@ -62,21 +62,21 @@
 			<Icon :name="socialMedia.icon" :class="`h-8 w-8`" />
 		</NuxtLink>
 	</div>
-	<div class="rounded-md flex flex-col bg-gray-100 p-4 gap-4 dark:bg-neutral-700">
+	<div class="flex flex-col gap-4 rounded-md bg-gray-100 p-4 dark:bg-neutral-700">
 		<div v-if="user.email" class="flex items-center">
 			<Icon
 				name="line-md:email-twotone-alt"
-				class="bg-white rounded-md h-12 shadow-sm p-2 text-gray-400 w-12 dark:bg-neutral-800 dark:text-white"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
-			<p class="cursor-default font-medium ml-3 dark:text-white">{{ user.email }}</p>
+			<p class="ml-3 cursor-default font-medium dark:text-white">{{ user.email }}</p>
 		</div>
 		<hr class="dark:border-neutral-800" />
 		<div v-if="user.location" class="flex items-center">
 			<Icon
 				name="line-md:map-marker"
-				class="bg-white rounded-md h-12 shadow-sm p-2 text-gray-400 w-12 dark:bg-neutral-800 dark:text-white"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
-			<p class="cursor-default font-medium ml-3 dark:text-white">
+			<p class="ml-3 cursor-default font-medium dark:text-white">
 				{{ user.location.city }}, {{ user.location.country }}
 			</p>
 		</div>
@@ -84,14 +84,14 @@
 		<div v-if="user.age" class="flex items-center">
 			<Icon
 				name="line-md:calendar"
-				class="bg-white rounded-md h-12 shadow-sm p-2 text-gray-400 w-12 dark:bg-neutral-800 dark:text-white"
+				class="h-12 w-12 rounded-md bg-white p-2 text-gray-400 shadow-sm dark:bg-neutral-800 dark:text-white"
 			/>
-			<p class="cursor-default font-medium ml-3 dark:text-white">{{ user.age }} years</p>
+			<p class="ml-3 cursor-default font-medium dark:text-white">{{ user.age }} years</p>
 		</div>
 	</div>
 	<PrimeButton
 		label="Download CV"
-		class="rounded-md font-medium bg-indigo-500 border-0 mt-5 text-white w-full py-2 duration-300 hover:bg-indigo-600 focus:outline-none"
+		class="mt-5 w-full rounded-md border-0 bg-indigo-500 py-2 font-medium text-white duration-300 hover:bg-indigo-600 focus:outline-none"
 		size="large"
 	>
 		<template #icon>

@@ -1,3 +1,5 @@
+import {sentryVitePlugin} from '@sentry/vite-plugin'
+
 export default defineNuxtConfig({
 	app: {
 		head: {
@@ -26,6 +28,7 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
 		'@nuxt/image',
+		'floating-vue/nuxt',
 	],
 
 	imports: {
@@ -76,7 +79,33 @@ export default defineNuxtConfig({
 	},
 
 	runtimeConfig: {
-		API_URL_SERVER: process.env.NUXT_PUBLIC_API_BASE,
+		public: {
+			api_url: process.env.NUXT_PUBLIC_API_BASE,
+			environment: process.env.NUXT_PUBLIC_ENVIRONMENT,
+			sentry: {
+				dsn: process.env.NUXT_PUBLIC_SENTRY_DSN,
+			},
+		},
+	},
+
+	vite: {
+		build: {
+			sourcemap: true,
+		},
+		plugins: [
+			// Sentry Vite plugin needs to be after all other plugins.
+			sentryVitePlugin({
+				org: 'dev-projects-jh',
+				project: 'front',
+				authToken: process.env.NUXT_SENTRY_AUTH_TOKEN,
+				telemetry: false,
+			}),
+		],
+	},
+
+	sourcemap: {
+		server: true,
+		client: true,
 	},
 
 	devtools: {

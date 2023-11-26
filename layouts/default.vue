@@ -128,7 +128,7 @@
 	.tdnn {
 		margin: 0 auto;
 		/*change size of toggle with font-size*/
-		font-size: 20%;
+		font-size: 4px;
 		height: 16em;
 		width: 30em;
 		border-radius: 16em;

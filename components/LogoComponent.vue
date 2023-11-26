@@ -2,25 +2,47 @@
 	const props = defineProps({
 		firstWord: {
 			type: String,
-			default: 'My',
+			default: 'Minha',
 		},
 		secondWord: {
 			type: String,
-			default: 'Resume',
+			default: 'Jornada',
 		},
-		color: {
+		textColor: {
 			type: String,
 			default: 'indigo',
 		},
+		bgColor: {
+			type: String,
+			default: 'indigo',
+		},
+		disableShadow: {
+			type: Boolean,
+			default: false,
+		},
+		disableBg: {
+			type: Boolean,
+			default: false,
+		},
 	})
 
-	const textColorClass = computed(() => `rounded-md p-2 text-4xl text-${props.color}-500`)
-	const bgColorClass = computed(() => `inline-block rounded-md bg-${props.color}-500 p-4 leading-8 text-white`)
+	const textColorClass = computed(() => `rounded-md p-2 text-xl ßmd:text-4xl text-${props.textColor}-500`)
+	const bgColorClass = computed(
+		() => `inline-block rounded-md bg-${props.bgColor}-500 py-1 px-4 md:py-4 leading-8 text-white`,
+	)
 </script>
 
 <template>
 	<div
-		class="flex w-fit cursor-default items-center justify-center rounded-md bg-white shadow-sm dark:bg-neutral-800"
+		:class="[
+			'flex w-fit cursor-default items-center justify-center rounded-md dark:bg-neutral-800',
+			{
+				'shadow-sm': !props.disableShadow,
+			},
+			{
+				'bg-white': !props.disableBg,
+			},
+		]"
 	>
 		<div class="text-center">
 			<h1 :class="textColorClass">
