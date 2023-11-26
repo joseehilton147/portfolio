@@ -86,7 +86,7 @@
 							/>
 						</div>
 						<div class="lt-sm:flex-col flex gap-4">
-							<div class="relative">
+							<div class="relative w-full md:w-1/2">
 								<label class="block text-left text-neutral-500">Senha</label>
 								<input
 									:type="showPassword ? 'text' : 'password'"
@@ -102,7 +102,7 @@
 									/>
 								</div>
 							</div>
-							<div class="relative">
+							<div class="relative w-full md:w-1/2">
 								<label class="block text-left text-neutral-500">Confirme sua senha</label>
 								<input
 									:type="showConfirmPassword ? 'text' : 'password'"
