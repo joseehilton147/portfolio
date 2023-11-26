@@ -28,7 +28,7 @@
 
 	const textColorClass = computed(() => `rounded-md p-2 text-xl ßmd:text-4xl text-${props.textColor}-500`)
 	const bgColorClass = computed(
-		() => `inline-block rounded-md bg-${props.bgColor}-500 py-1 px-4 md:py-4 leading-8 text-white`,
+		() => `inline-block rounded-md bg-${props.bgColor}-500 py-1 px-4 leading-8 text-white`,
 	)
 </script>
 
