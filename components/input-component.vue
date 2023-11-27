@@ -63,7 +63,7 @@
 </script>
 
 <template>
-	<ClientOnly>
+	<client-only>
 		<div class="relative flex flex-col">
 			<label class="block text-left text-neutral-500">{{ label }}</label>
 			<input
@@ -93,5 +93,5 @@
 				/>
 			</div>
 		</div>
-	</ClientOnly>
+	</client-only>
 </template>

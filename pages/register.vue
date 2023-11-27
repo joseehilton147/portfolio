@@ -1,6 +1,14 @@
 <script setup>
+	import Bowser from 'bowser'
+	import CheckboxComponent from '~/components/checkbox-component.vue'
+
+	const authStore = useAuthStore()
+
 	const currentYear = ref(new Date().getFullYear())
 	const hasAcceptedTerms = ref(false)
+	const loading = reactive({
+		register: false,
+	})
 
 	const user = reactive({
 		fullName: null,
@@ -15,6 +23,31 @@
 		hasAcceptedTerms.value = isChecked
 	}
 
+	async function handleRegisterUser() {
+		loading.register = true
+
+		await authStore.doPostRegister({
+			...user,
+			// eslint-disable-next-line import/no-named-as-default-member
+			device: Bowser.parse(window.navigator.userAgent),
+		})
+
+		loading.register = false
+	}
+
+	const isFormValid = computed(() => {
+		return (
+			user.fullName &&
+			user.userName &&
+			user.birthDate &&
+			user.email &&
+			user.password &&
+			user.confirmPassword &&
+			user.password === user.confirmPassword &&
+			hasAcceptedTerms.value
+		)
+	})
+
 	definePageMeta({
 		// to not use the default layout
 		layout: '',
@@ -24,14 +57,13 @@
 <template>
 	<div class="bg-white">
 		<div class="flex min-h-screen flex-col md:flex-row">
-			<!-- Left Side -->
 			<div class="md:w-6/10 hidden w-full flex-col justify-between bg-indigo-500 py-6 text-white md:flex">
 				<div class="flex flex-grow items-center justify-center">
 					<NuxtImg src="/images/landing-page/background.svg" class="mx-auto h-auto max-w-md" />
 				</div>
 				<p class="mb-2 mt-4 text-center">© {{ currentYear }}</p>
 			</div>
-			<!-- Right Side -->
+
 			<div class="md:w-4/10 flex min-h-screen flex-col items-center justify-between p-6">
 				<div class="cursor-default text-center">
 					<div class="flex items-center justify-center">
@@ -84,12 +116,16 @@
 								type="password"
 							/>
 						</div>
-						<CheckBoxComponent
+						<CheckboxComponent
 							name="terms"
 							label="Ao criar uma conta, concordo com a Política de Privacidade & Termos de Uso"
 							@update:checked="handleCheckboxChange"
 						/>
-						<button class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:bg-indigo-700">
+						<button
+							class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:enabled:bg-indigo-700 disabled:opacity-50"
+							:disabled="!isFormValid"
+							@click="handleRegisterUser"
+						>
 							Cadastrar
 						</button>
 					</div>
@@ -102,4 +138,5 @@
 			</div>
 		</div>
 	</div>
+	<loader-component :display-loading="loading.register" />
 </template>

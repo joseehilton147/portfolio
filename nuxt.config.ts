@@ -24,7 +24,6 @@ export default defineNuxtConfig({
 		'@unocss/nuxt',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/device',
-		'nuxt-primevue',
 		'@pinia/nuxt',
 		'@pinia-plugin-persistedstate/nuxt',
 		'@nuxt/image',
@@ -37,22 +36,6 @@ export default defineNuxtConfig({
 
 	pinia: {
 		autoImports: ['defineStore', 'acceptHMRUpdate'],
-	},
-
-	primevue: {
-		options: {
-			ripple: true,
-			inputStyle: 'filled',
-		},
-		importPT: {as: 'Tailwind', from: 'primevue/passthrough/tailwind'},
-		components: {
-			prefix: 'Prime',
-			exclude: ['Editor', 'Chart'],
-		},
-		directives: {
-			prefix: 'Prime',
-			exclude: ['tooltip'],
-		},
 	},
 
 	device: {
@@ -73,7 +56,7 @@ export default defineNuxtConfig({
 	},
 
 	build: {
-		transpile: ['swiper', 'primevue'],
+		transpile: ['swiper', 'vue-toastification'],
 	},
 
 	vue: {
@@ -84,7 +67,7 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			api_url: process.env.NUXT_PUBLIC_API_BASE,
+			api_url: process.env.NUXT_PUBLIC_API_URL,
 			environment: process.env.NUXT_PUBLIC_ENVIRONMENT,
 			sentry: {
 				dsn: process.env.NUXT_PUBLIC_SENTRY_DSN,
