@@ -49,6 +49,10 @@ export default defineNuxtConfig({
 			prefix: 'Prime',
 			exclude: ['Editor', 'Chart'],
 		},
+		directives: {
+			prefix: 'Prime',
+			exclude: ['tooltip'],
+		},
 	},
 
 	device: {

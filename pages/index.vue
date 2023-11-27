@@ -1,19 +1,15 @@
 <script setup>
-	const currentYear = ref(null)
-	const showPassword = ref(false)
+	const currentYear = ref(new Date().getFullYear())
 
-	function toggleShowPassword() {
-		showPassword.value = !showPassword.value
-	}
+	const user = reactive({
+		email: null,
+		password: null,
+	})
 
 	function scrollTologin() {
 		const el = document.getElementById('login')
 		el.scrollIntoView({behavior: 'smooth'})
 	}
-
-	onMounted(() => {
-		currentYear.value = new Date().getFullYear()
-	})
 
 	definePageMeta({
 		layout: '',
@@ -78,14 +74,14 @@
 					<div class="my-6 flex flex-col gap-4 sm:flex-row">
 						<button
 							v-tooltip.top="'Em breve'"
-							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-4 text-neutral-500"
+							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-3 text-neutral-500"
 						>
 							<Icon name="devicon:google" class="mr-2 h-6 w-6" />
 							com Google
 						</button>
 						<button
 							v-tooltip.top="'Em breve'"
-							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-4 text-neutral-500"
+							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-3 text-neutral-500"
 						>
 							<Icon name="devicon:linkedin" class="mr-2 h-6 w-6" />
 							com Linkedin
@@ -99,35 +95,18 @@
 					</div>
 
 					<div class="grid gap-4">
-						<div>
-							<label class="block text-left text-neutral-500">Email</label>
-							<input
-								type="email"
-								class="w-full rounded-lg border border-gray-200 px-4 py-4 text-neutral-500"
-								placeholder="email@abc.com.br"
-							/>
-						</div>
-						<div class="relative">
-							<label class="block text-left text-neutral-500">Senha</label>
-							<input
-								:type="showPassword ? 'text' : 'password'"
-								class="w-full rounded-lg border border-gray-200 px-4 py-2 pr-10 text-neutral-500"
-							/>
-							<div
-								class="absolute right-0 top-1/2 flex -translate-y-1/2 transform cursor-pointer items-center pr-3"
-								@click="toggleShowPassword"
-							>
-								<Icon
-									:name="showPassword ? 'mdi:eye-off-outline' : 'mdi:eye-outline'"
-									class="h-6 w-6 text-neutral-500"
-								/>
-							</div>
-						</div>
+						<InputComponent
+							v-model="user.email"
+							name="email"
+							label="Email"
+							placeholder="john_doe@domain.com"
+						/>
+						<InputComponent v-model="user.password" name="password" label="Senha" type="password" />
 						<div class="flex items-center">
 							<input type="checkbox" />
 							<span class="fw-semibold ml-1 cursor-default text-xs text-neutral-500">Me lembre</span>
 						</div>
-						<button class="w-full rounded-lg bg-indigo-500 py-4 text-white hover:bg-indigo-700">
+						<button class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:bg-indigo-700">
 							Login
 						</button>
 					</div>
