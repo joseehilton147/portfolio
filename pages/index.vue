@@ -1,4 +1,8 @@
 <script setup>
+	import Bowser from 'bowser'
+
+	const authStore = useAuthStore()
+
 	const currentYear = ref(new Date().getFullYear())
 
 	const user = reactive({
@@ -14,6 +18,11 @@
 	definePageMeta({
 		layout: '',
 	})
+
+	async function handleLogin() {
+		// eslint-disable-next-line import/no-named-as-default-member
+		await authStore.doPostLogin({...user, device: Bowser.parse(window.navigator.userAgent)})
+	}
 </script>
 
 <template>
@@ -106,7 +115,10 @@
 							<input type="checkbox" />
 							<span class="fw-semibold ml-1 cursor-default text-xs text-neutral-500">Me lembre</span>
 						</div>
-						<button class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:bg-indigo-700">
+						<button
+							class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:bg-indigo-700"
+							@click="handleLogin"
+						>
 							Login
 						</button>
 					</div>

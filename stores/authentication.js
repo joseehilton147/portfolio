@@ -22,10 +22,26 @@ export const useAuthStore = defineStore({
 			this.filterList.push(value)
 		},
 		async doPostLogin(userData) {
-			const response = await api.post(`${API_URL}/${route.AuthLogin}`, userData).then(res => res.data)
+			const {$sentry} = useNuxtApp()
 
-			this.user = response.user ?? null
-			this.accessToken = response.token ?? null
+			try {
+				const API_URL = useApiUrl()
+
+				const response = await api.post(`${API_URL}/${route.AuthLogin}`, userData).then(res => res.data)
+
+				this.user = response.user ?? null
+				this.accessToken = response.token ?? null
+
+				toast.success('Login realizado com sucesso!')
+
+				return this.user
+			} catch (error) {
+				toast.error('Usuário e/ou senha incorreta.')
+
+				console.error('[POST] login error => ', error)
+
+				$sentry.captureException(error)
+			}
 		},
 		async doGetMe() {
 			const response = await api.get(`${API_URL}/${route.AuthMe}`).then(res => res.data)
