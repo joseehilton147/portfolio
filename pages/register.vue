@@ -1,11 +1,13 @@
 <script setup>
 	import Bowser from 'bowser'
-	import CheckboxComponent from '~/components/checkbox-component.vue'
+
+	const router = useRouter()
 
 	const authStore = useAuthStore()
 
 	const currentYear = ref(new Date().getFullYear())
 	const hasAcceptedTerms = ref(false)
+
 	const loading = reactive({
 		register: false,
 	})
@@ -26,31 +28,28 @@
 	async function handleRegisterUser() {
 		loading.register = true
 
-		await authStore.doPostRegister({
+		const response = await authStore.doPostRegister({
 			...user,
 			// eslint-disable-next-line import/no-named-as-default-member
 			device: Bowser.parse(window.navigator.userAgent),
 		})
 
+		if (response === 'email') user.email = null
+
+		if (response.token) router.push('/')
+
 		loading.register = false
 	}
 
 	const isFormValid = computed(() => {
-		return (
-			user.fullName &&
-			user.userName &&
-			user.birthDate &&
-			user.email &&
-			user.password &&
-			user.confirmPassword &&
-			user.password === user.confirmPassword &&
-			hasAcceptedTerms.value
-		)
+		const fieldsAreFilled = Object.values(user).every(field => field)
+		const passwordsMatch = user.password === user.confirmPassword
+
+		return fieldsAreFilled && passwordsMatch && hasAcceptedTerms.value
 	})
 
 	definePageMeta({
-		// to not use the default layout
-		layout: '',
+		layout: '', // Disable the default layout
 	})
 </script>
 

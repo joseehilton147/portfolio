@@ -44,16 +44,32 @@ export const useAuthStore = defineStore({
 				this.accessToken = response.token ?? null
 
 				toast.success('Cadastro realizado com sucesso!')
+
+				// @TODO: Auto login user after successful register
+				return response
 			} catch (error) {
+				const duplicatedField = error.response?.data?.duplicatedField
+
+				if (duplicatedField) {
+					const warningMessage =
+						duplicatedField === 'email'
+							? 'E-mail já cadastrado!'
+							: duplicatedField === 'username'
+							  ? 'Nome de usuário já cadastrado!'
+							  : null
+
+					if (warningMessage) {
+						toast.warning(warningMessage)
+
+						return duplicatedField
+					}
+				}
+
+				toast.error('Erro ao realizar cadastro, tente novamente mais tarde!')
+
 				console.error('[POST] register error => ', error)
 
-				if (error.response.data?.duplicatedField === 'email') {
-					toast.warning('E-mail já cadastrado!')
-				} else {
-					$sentry.captureException(error)
-
-					toast.error('Erro ao realizar cadastro, tente novamente mais tarde!')
-				}
+				$sentry.captureException(error)
 			}
 		},
 	},
