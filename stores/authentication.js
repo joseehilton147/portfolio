@@ -54,7 +54,7 @@ export const useAuthStore = defineStore({
 					const warningMessage =
 						duplicatedField === 'email'
 							? 'E-mail já cadastrado!'
-							: duplicatedField === 'username'
+							: duplicatedField === 'userName'
 							  ? 'Nome de usuário já cadastrado!'
 							  : null
 

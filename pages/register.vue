@@ -35,8 +35,7 @@
 		})
 
 		if (response === 'email') user.email = null
-
-		if (response.token) router.push('/')
+		if (response?.token) router.push('/')
 
 		loading.register = false
 	}
