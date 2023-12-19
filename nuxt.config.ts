@@ -1,5 +1,3 @@
-import {sentryVitePlugin} from '@sentry/vite-plugin'
-
 export default defineNuxtConfig({
 	app: {
 		head: {
@@ -17,7 +15,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ['~/assets/styles/main.css', '@unocss/reset/tailwind.css'],
+	css: ['~/assets/styles/main.css', '~/assets/styles/code-block.css', '@unocss/reset/tailwind.css'],
 
 	modules: [
 		'nuxt-icon',
@@ -30,12 +28,8 @@ export default defineNuxtConfig({
 		'floating-vue/nuxt',
 	],
 
-	imports: {
-		dirs: ['./stores'],
-	},
-
 	pinia: {
-		autoImports: ['defineStore', 'acceptHMRUpdate'],
+		storesDirs: ['./stores', 'composables/**'],
 	},
 
 	device: {
@@ -45,10 +39,6 @@ export default defineNuxtConfig({
 	colorMode: {
 		classSuffix: '',
 		preference: 'light',
-	},
-
-	tailwindcss: {
-		viewer: false,
 	},
 
 	experimental: {
@@ -69,33 +59,12 @@ export default defineNuxtConfig({
 		public: {
 			api_url: process.env.NUXT_PUBLIC_API_URL,
 			environment: process.env.NUXT_PUBLIC_ENVIRONMENT,
-			sentry: {
-				dsn: process.env.NUXT_PUBLIC_SENTRY_DSN,
-			},
 		},
-	},
-
-	vite: {
-		build: {
-			sourcemap: true,
-		},
-		plugins: [
-			// Sentry Vite plugin needs to be after all other plugins.
-			sentryVitePlugin({
-				org: 'dev-projects-jh',
-				project: 'front',
-				authToken: process.env.NUXT_SENTRY_AUTH_TOKEN,
-				telemetry: false,
-			}),
-		],
-	},
-
-	sourcemap: {
-		server: true,
-		client: true,
 	},
 
 	devtools: {
-		enabled: false,
+		timeline: {
+			enabled: true,
+		},
 	},
 })

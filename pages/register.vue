@@ -21,10 +21,6 @@
 		confirmPassword: null,
 	})
 
-	function handleCheckboxChange(isChecked) {
-		hasAcceptedTerms.value = isChecked
-	}
-
 	async function handleRegisterUser() {
 		loading.register = true
 
@@ -48,7 +44,7 @@
 	})
 
 	definePageMeta({
-		layout: '', // Disable the default layout
+		layout: '',
 	})
 </script>
 
@@ -78,27 +74,27 @@
 						<h1 class="fw-bold mb-2 text-3xl text-indigo-500 md:text-5xl">Crie sua conta</h1>
 					</div>
 					<div class="grid gap-4">
-						<InputComponent
+						<vs-input
 							v-model="user.fullName"
 							name="fullName"
 							label="Nome completo"
 							placeholder="John Doe"
 						/>
 						<div class="grid grid-cols-2 gap-4">
-							<InputComponent
+							<vs-input
 								v-model="user.userName"
 								name="username"
 								label="Nome de usuário"
 								placeholder="@john_doe"
 							/>
-							<InputComponent
+							<vs-input
 								v-model="user.birthDate"
 								name="birthDate"
 								label="Data de nascimento"
 								type="date"
 							/>
 						</div>
-						<InputComponent
+						<vs-input
 							v-model="user.email"
 							name="email"
 							label="Email"
@@ -106,26 +102,26 @@
 							type="email"
 						/>
 						<div class="grid grid-cols-2 gap-4">
-							<InputComponent v-model="user.password" name="password" label="Senha" type="password" />
-							<InputComponent
+							<vs-input v-model="user.password" name="password" label="Senha" type="password" />
+							<vs-input
 								v-model="user.confirmPassword"
 								name="confirm_password"
 								label="Confirme sua senha"
 								type="password"
 							/>
 						</div>
-						<CheckboxComponent
+						<vs-checkbox
 							name="terms"
 							label="Ao criar uma conta, concordo com a Política de Privacidade & Termos de Uso"
-							@update:checked="handleCheckboxChange"
+							v-model="hasAcceptedTerms"
 						/>
-						<button
-							class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:enabled:bg-indigo-700 disabled:opacity-50"
+						<vs-button
 							:disabled="!isFormValid"
+							label="Cadastrar"
+							block
 							@click="handleRegisterUser"
-						>
-							Cadastrar
-						</button>
+						/>
+							
 					</div>
 				</div>
 

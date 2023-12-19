@@ -8,6 +8,7 @@
 	const user = reactive({
 		email: null,
 		password: null,
+		stayLogged: false,
 	})
 
 	function scrollTologin() {
@@ -28,11 +29,9 @@
 <template>
 	<div class="bg-white">
 		<div class="flex min-h-screen flex-col md:flex-row">
-			<!-- Left Side -->
 			<div
 				class="lt-sm:py-20 md:w-6/10 flex min-h-screen flex-col items-center justify-between bg-indigo-500 p-4 text-white"
 			>
-				<!-- Placeholder div for alignment -->
 				<div>
 					<div class="cursor-default text-center md:hidden">
 						<div class="flex items-center justify-center">
@@ -61,7 +60,6 @@
 				</div>
 			</div>
 
-			<!-- Right Side -->
 			<div id="login" class="md:w-4/10 flex min-h-screen flex-col items-center justify-between p-6">
 				<div class="cursor-default text-center">
 					<div class="flex items-center justify-center">
@@ -73,57 +71,34 @@
 						Comece gratuitamente e destaque-se dos seus concorrentes
 					</p>
 				</div>
-
 				<div class="w-full">
 					<div class="cursor-default text-center">
 						<h1 class="fw-bold mb-2 text-3xl text-indigo-500 md:text-5xl">Bem vindo</h1>
 						<p class="fw-semibold text-neutral-700">Faça login em sua conta</p>
 					</div>
 
-					<div class="my-6 flex flex-col gap-4 sm:flex-row">
-						<button
-							v-tooltip.top="'Em breve'"
-							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-3 text-neutral-500"
-						>
+					<div class="my-6 grid grid-cols-2 gap-6">
+						<vs-button block size="lg" cursor="notAllowed" :ui="{ custom: 'border border-gray-200 text-neutral-500' }" v-tooltip.top="'Em breve'">
 							<Icon name="devicon:google" class="mr-2 h-6 w-6" />
 							com Google
-						</button>
-						<button
-							v-tooltip.top="'Em breve'"
-							class="fw-bold flex w-full cursor-not-allowed items-center justify-center rounded-lg border border-gray-200 py-3 text-neutral-500"
-						>
+						</vs-button>
+						<vs-button block size="lg" cursor="notAllowed" :ui="{ custom: 'border border-gray-200 text-neutral-500' }" v-tooltip.top="'Em breve'">
 							<Icon name="devicon:linkedin" class="mr-2 h-6 w-6" />
 							com Linkedin
-						</button>
+						</vs-button>
 					</div>
-
 					<div class="flex cursor-default items-center justify-center gap-4">
 						<div class="flex-grow border-t border-gray-200"></div>
 						<span>OU</span>
 						<div class="flex-grow border-t border-gray-200"></div>
 					</div>
-
-					<div class="grid gap-4">
-						<InputComponent
-							v-model="user.email"
-							name="email"
-							label="Email"
-							placeholder="john_doe@domain.com"
-						/>
-						<InputComponent v-model="user.password" name="password" label="Senha" type="password" />
-						<div class="flex items-center">
-							<input type="checkbox" />
-							<span class="fw-semibold ml-1 cursor-default text-xs text-neutral-500">Me lembre</span>
-						</div>
-						<button
-							class="w-full rounded-lg bg-indigo-500 py-3 text-white hover:bg-indigo-700"
-							@click="handleLogin"
-						>
-							Login
-						</button>
+					<div class="grid gap-4 py-4">
+						<vs-input label="Email" v-model="user.email" size="lg" radius="md" name="email" placeholder="john_doe@domain.com" />
+						<vs-input v-model="user.password" label="Senha" size="lg" radius="md" type="password" name="password" placeholder="********" />
+						<vs-checkbox v-model="user.stayLogged" name="remember-me-login" label="Me lembre" />
 					</div>
+					<vs-button block label="Entrar" :disabled="!user.email || !user.password" @click="handleLogin" />
 				</div>
-
 				<div class="lt-sm:mt-8 flex">
 					<p class="mr-2 cursor-default text-neutral-500">Ainda não possui conta?</p>
 					<nuxt-link to="/register" class="fw-semibold text-indigo-500">Crie agora mesmo!</nuxt-link>
@@ -140,7 +115,6 @@
 		height: 5px;
 		-ms-transform: rotate(45deg);
 		-webkit-transform: rotate(45deg);
-		transform: rotate(45deg);
 		transform: rotate(45deg);
 		border-right: 2px solid #fff;
 		border-bottom: 2px solid #fff;
@@ -194,13 +168,10 @@
 		margin: 5px auto;
 		background: #ffffff;
 		position: relative;
-	}
-	#mouse-scroll .mouse-in {
 		animation: animated-mouse 1.2s ease infinite;
 		-webkit-animation: animated-mouse 1.2s ease infinite;
 		-moz-animation: mouse-animated 1.2s ease infinite;
 	}
-
 	@keyframes animated-mouse {
 		0% {
 			opacity: 1;

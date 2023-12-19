@@ -146,8 +146,8 @@
 								? 'bg-neutral-700'
 								: 'bg-neutral-600'
 							: index % 2 === 0
-							? 'bg-rose-50'
-							: 'bg-indigo-50',
+								? 'bg-rose-50'
+								: 'bg-indigo-50',
 						{'mb-4': experiences.length - 1 !== index},
 					]"
 				>
@@ -179,8 +179,8 @@
 								? 'bg-neutral-600'
 								: 'bg-neutral-700'
 							: index % 2 === 0
-							? 'bg-indigo-50'
-							: 'bg-rose-50',
+								? 'bg-indigo-50'
+								: 'bg-rose-50',
 						{'mb-4': academicLife.length - 1 !== index},
 					]"
 				>
@@ -211,8 +211,8 @@
 								? 'bg-neutral-600'
 								: 'bg-neutral-700'
 							: index % 2 === 0
-							? 'bg-indigo-50'
-							: 'bg-rose-50',
+								? 'bg-indigo-50'
+								: 'bg-rose-50',
 						{'mb-4': certification.length - 1 !== index},
 					]"
 				>

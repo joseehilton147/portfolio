@@ -22,8 +22,6 @@ export const useAuthStore = defineStore({
 			this.filterList.push(value)
 		},
 		async doPostLogin(userData) {
-			const {$sentry} = useNuxtApp()
-
 			try {
 				const API_URL = useApiUrl()
 
@@ -39,8 +37,6 @@ export const useAuthStore = defineStore({
 				toast.error('Usuário e/ou senha incorreta.')
 
 				console.error('[POST] login error => ', error)
-
-				$sentry.captureException(error)
 			}
 		},
 		async doGetMe() {
@@ -49,8 +45,6 @@ export const useAuthStore = defineStore({
 			this.user = response.user ?? null
 		},
 		async doPostRegister(userData) {
-			const {$sentry} = useNuxtApp()
-
 			try {
 				const API_URL = useApiUrl()
 
@@ -71,8 +65,8 @@ export const useAuthStore = defineStore({
 						duplicatedField === 'email'
 							? 'E-mail já cadastrado!'
 							: duplicatedField === 'userName'
-							  ? 'Nome de usuário já cadastrado!'
-							  : null
+								? 'Nome de usuário já cadastrado!'
+								: null
 
 					if (warningMessage) {
 						toast.warning(warningMessage)
@@ -84,8 +78,6 @@ export const useAuthStore = defineStore({
 				toast.error('Erro ao realizar cadastro, tente novamente mais tarde!')
 
 				console.error('[POST] register error => ', error)
-
-				$sentry.captureException(error)
 			}
 		},
 	},
