@@ -23,5 +23,6 @@ module.exports = {
 			},
 		],
 		semi: 'off',
+		'no-console': ['error', {allow: ['error']}],
 	},
 }

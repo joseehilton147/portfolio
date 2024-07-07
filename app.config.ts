@@ -51,7 +51,30 @@ const cursor = {
 }
 
 // COMPONENTS UI
-const tailwindColors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
+const tailwindColors = [
+	'slate',
+	'gray',
+	'zinc',
+	'neutral',
+	'stone',
+	'red',
+	'orange',
+	'amber',
+	'yellow',
+	'lime',
+	'green',
+	'emerald',
+	'teal',
+	'cyan',
+	'sky',
+	'blue',
+	'indigo',
+	'violet',
+	'purple',
+	'fuchsia',
+	'pink',
+	'rose',
+]
 const defaultColors = ['primary', 'secondary', 'success', 'warning', 'danger', 'info']
 const customColors = ['lavender']
 
@@ -161,7 +184,7 @@ export default defineAppConfig({
 		size,
 		padding,
 		icon,
-		cursor
+		cursor,
 	},
 	ui: {
 		colors,

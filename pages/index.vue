@@ -78,11 +78,23 @@
 					</div>
 
 					<div class="my-6 grid grid-cols-2 gap-6">
-						<vs-button block size="lg" cursor="notAllowed" :ui="{ custom: 'border border-gray-200 text-neutral-500' }" v-tooltip.top="'Em breve'">
+						<vs-button
+							v-tooltip.top="'Em breve'"
+							block
+							size="lg"
+							cursor="notAllowed"
+							:ui="{custom: 'border border-gray-200 text-neutral-500'}"
+						>
 							<Icon name="devicon:google" class="mr-2 h-6 w-6" />
 							com Google
 						</vs-button>
-						<vs-button block size="lg" cursor="notAllowed" :ui="{ custom: 'border border-gray-200 text-neutral-500' }" v-tooltip.top="'Em breve'">
+						<vs-button
+							v-tooltip.top="'Em breve'"
+							block
+							size="lg"
+							cursor="notAllowed"
+							:ui="{custom: 'border border-gray-200 text-neutral-500'}"
+						>
 							<Icon name="devicon:linkedin" class="mr-2 h-6 w-6" />
 							com Linkedin
 						</vs-button>
@@ -93,8 +105,23 @@
 						<div class="flex-grow border-t border-gray-200"></div>
 					</div>
 					<div class="grid gap-4 py-4">
-						<vs-input label="Email" v-model="user.email" size="lg" radius="md" name="email" placeholder="john_doe@domain.com" />
-						<vs-input v-model="user.password" label="Senha" size="lg" radius="md" type="password" name="password" placeholder="********" />
+						<vs-input
+							v-model="user.email"
+							label="Email"
+							size="lg"
+							radius="md"
+							name="email"
+							placeholder="john_doe@domain.com"
+						/>
+						<vs-input
+							v-model="user.password"
+							label="Senha"
+							size="lg"
+							radius="md"
+							type="password"
+							name="password"
+							placeholder="********"
+						/>
 						<vs-checkbox v-model="user.stayLogged" name="remember-me-login" label="Me lembre" />
 					</div>
 					<vs-button block label="Entrar" :disabled="!user.email || !user.password" @click="handleLogin" />

@@ -94,10 +94,10 @@
 
 	const buttonClass = computed(() => {
 		let variantValue = ''
-		
+
 		if (!containsColor(ui.value.custom)) {
 			variantValue = ui.value.variants[props.variant]?.replace(/\{color\}/g, props.color) || props.variant
-        }
+		}
 
 		const isBlock = props.block ? ui.value.block : ''
 
@@ -131,7 +131,7 @@
 	})
 
 	function containsColor(value) {
-        return value.split(' ').some(part => appConfig.ui.colors.some(color => part.includes(color)))
+		return value.split(' ').some(part => appConfig.ui.colors.some(color => part.includes(color)))
 	}
 </script>
 

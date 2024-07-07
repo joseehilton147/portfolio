@@ -60,7 +60,7 @@
 		:class="[
 			'container flex',
 			{'my-8 justify-end': $device.isDesktop},
-			{'my-4  justify-center': $device.isMobileOrTablet},
+			{'my-4 justify-center': $device.isMobileOrTablet},
 		]"
 	>
 		<div>

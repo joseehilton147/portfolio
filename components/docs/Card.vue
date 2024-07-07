@@ -11,7 +11,7 @@
 
 <template>
 	<div class="rounded-md bg-white shadow-sm dark:bg-neutral-900">
-		<header :class="['px-4 py-4 ', {'dark:border-color-neutral-800 border-b': slots?.default}]">
+		<header :class="['px-4 py-4', {'dark:border-color-neutral-800 border-b': slots?.default}]">
 			<h1 :class="['fw-600 color-gray-600 dark:color-slate-200 text-2xl', {'mb-4': slots?.header}]">
 				{{ title }}
 			</h1>

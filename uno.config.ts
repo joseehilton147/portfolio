@@ -1,17 +1,40 @@
 import {defineConfig, presetUno} from 'unocss'
 
 // TODO: find a better way to do this
-const tailwindColors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
+const tailwindColors = [
+	'slate',
+	'gray',
+	'zinc',
+	'neutral',
+	'stone',
+	'red',
+	'orange',
+	'amber',
+	'yellow',
+	'lime',
+	'green',
+	'emerald',
+	'teal',
+	'cyan',
+	'sky',
+	'blue',
+	'indigo',
+	'violet',
+	'purple',
+	'fuchsia',
+	'pink',
+	'rose',
+]
 const defaultColors = ['primary', 'secondary', 'success', 'warning', 'danger', 'info']
 const customColors = ['lavender']
-const types = ['bg', 'color', 'border', 'hover:bg', 'hover:color', 'hover:border'];
-const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950'];
+const types = ['bg', 'color', 'border', 'hover:bg', 'hover:color', 'hover:border']
+const shades = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950']
 
 const safelistColors = types.flatMap(type =>
-    [...tailwindColors ,...defaultColors, ...customColors.map(color => `custom-${color}`)].flatMap(color =>
-        shades.map(shade => `${type}-${color}-${shade}`)
-    )
-);
+	[...tailwindColors, ...defaultColors, ...customColors.map(color => `custom-${color}`)].flatMap(color =>
+		shades.map(shade => `${type}-${color}-${shade}`),
+	),
+)
 
 export default defineConfig({
 	presets: [presetUno()],
@@ -120,7 +143,7 @@ export default defineConfig({
 					'900': '#4a2083', // bg-custom-lavender-900
 					'950': '#300b60', // bg-custom-lavender-950
 				},
-			}
+			},
 		},
 	},
 })

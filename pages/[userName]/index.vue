@@ -1,7 +1,6 @@
 <script setup>
-	const authStore = useAuthStore()
-
-	const user = ref(authStore.getUser)
+	// const authStore = useAuthStore()
+	// const user = ref(authStore.getUser)
 
 	const colorMode = useColorMode()
 
@@ -110,10 +109,10 @@
 		</p>
 		<UxCursiveTitle text="What i do!" text-size="text-4xl md:text-5xl" class="my-8" />
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-			<div v-for="(area, index) of areas" :key="index" :class="[' rounded-md shadow-sm', getColorClass(index)]">
+			<div v-for="(area, index) of areas" :key="index" :class="['rounded-md shadow-sm', getColorClass(index)]">
 				<div class="relative px-6 py-4">
-					<h1 class="mb-2 text-xl font-medium dark:text-white md:text-2xl">{{ area.name }}</h1>
-					<p class="text-sm font-medium text-neutral-500 dark:text-stone-300 md:text-base">
+					<h1 class="mb-2 text-xl font-medium md:text-2xl dark:text-white">{{ area.name }}</h1>
+					<p class="text-sm font-medium text-neutral-500 md:text-base dark:text-stone-300">
 						{{ area.description }}
 					</p>
 					<Icon :name="area.icon" class="absolute bottom-0 right-2 h-24 w-24 opacity-5 dark:opacity-10" />

@@ -111,17 +111,11 @@
 							/>
 						</div>
 						<vs-checkbox
+							v-model="hasAcceptedTerms"
 							name="terms"
 							label="Ao criar uma conta, concordo com a Política de Privacidade & Termos de Uso"
-							v-model="hasAcceptedTerms"
 						/>
-						<vs-button
-							:disabled="!isFormValid"
-							label="Cadastrar"
-							block
-							@click="handleRegisterUser"
-						/>
-							
+						<vs-button :disabled="!isFormValid" label="Cadastrar" block @click="handleRegisterUser" />
 					</div>
 				</div>
 

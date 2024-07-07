@@ -1,21 +1,22 @@
 <script setup>
 	const router = useRouter()
+	const route = useRoute()
 
 	const sidebarItems = ref([
 		{
 			name: 'About',
 			icon: 'line-md:account',
-			link: '/',
+			link: `/${route.params.userName}`,
 		},
 		{
 			name: 'Resume',
 			icon: 'line-md:briefcase',
-			link: '/resume',
+			link: `/${route.params.userName}/resume`,
 		},
 		{
 			name: 'Articles',
 			icon: 'line-md:text-box-to-text-box-multiple-transition',
-			link: '/articles',
+			link: `/${route.params.userName}/articles`,
 		},
 	])
 
@@ -44,7 +45,7 @@
 			:key="index"
 			:to="item.link"
 			:class="[
-				'flex items-center justify-center  duration-300 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:text-white dark:hover:bg-indigo-500',
+				'flex items-center justify-center duration-300 hover:cursor-pointer hover:bg-indigo-500 hover:text-white dark:text-white dark:hover:bg-indigo-500',
 				{'flex-col rounded-md p-4': $device.isDesktop},
 				{'px-8 py-4': $device.isMobileOrTablet},
 				{'mb-4': sidebarItems.length - 1 !== index},

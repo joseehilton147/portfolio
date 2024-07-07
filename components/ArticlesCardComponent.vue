@@ -15,7 +15,7 @@
 	<main
 		v-for="article in articles"
 		:key="article.id"
-		class="flex flex-col justify-between rounded-md bg-gray-50 px-3 py-4 dark:bg-neutral-700 md:px-6"
+		class="flex flex-col justify-between rounded-md bg-gray-100 px-3 py-4 md:px-6 dark:bg-neutral-700"
 	>
 		<header class="flex flex-col">
 			<NuxtLink

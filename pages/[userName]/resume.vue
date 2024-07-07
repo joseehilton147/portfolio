@@ -140,7 +140,7 @@
 					v-for="(experience, index) of experiences"
 					:key="index"
 					:class="[
-						' rounded-md shadow-sm',
+						'rounded-md shadow-sm',
 						isDarkMode
 							? index % 2 === 0
 								? 'bg-neutral-700'
@@ -173,7 +173,7 @@
 					v-for="(education, index) of academicLife"
 					:key="index"
 					:class="[
-						' rounded-md shadow-sm',
+						'rounded-md shadow-sm',
 						isDarkMode
 							? index % 2 === 0
 								? 'bg-neutral-600'
@@ -205,7 +205,7 @@
 					v-for="(certification, index) of certifications"
 					:key="index"
 					:class="[
-						' rounded-md shadow-sm',
+						'rounded-md shadow-sm',
 						isDarkMode
 							? index % 2 === 0
 								? 'bg-neutral-600'
